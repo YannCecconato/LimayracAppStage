@@ -61,6 +61,7 @@
                 </form>
                 <!-- Fin du formulaire d'inscription de l'élève-->
 
+
                 <?php    
 
                     /** Récupère les champs du formulaire */
