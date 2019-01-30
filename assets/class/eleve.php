@@ -141,26 +141,6 @@ class Eleve {
     }
 
     /**
-     * Get the value of libelleCursusEleve
-     */ 
-    public function getLibelleCursusEleve()
-    {
-        return $this->libelleCursusEleve;
-    }
-
-    /**
-     * Set the value of libelleCursusEleve
-     *
-     * @return  self
-     */ 
-    public function setLibelleCursusEleve($libelleCursusEleve)
-    {
-        $this->libelleCursusEleve = $libelleCursusEleve;
-
-        return $this;
-    }
-
-    /**
      * Get the value of idOptionEleve
      */ 
     public function getIdOptionEleve()

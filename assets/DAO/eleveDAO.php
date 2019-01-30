@@ -7,6 +7,24 @@ class EleveDAO extends DAO {
         parent::__construct();
     }
 
+/** function findAll() */ 
+    function findAll() {
+        $sql = "select * from eleve";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute();
+            $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        $eleves = array();
+        foreach ($rows as $row) {
+            $eleves[] = new eleve($row);
+        }
+        /** Retourne un tableau d'objets "eleve" */ 
+        return $eleves;
+    }
+
 /** Fonction d'insertion des étudiants */    
     function insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
         $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, GenreEleve, AdresseEleve, TelephoneEleve, EmailEleve, OptionEleve, LibelleCursusEleve) ";
