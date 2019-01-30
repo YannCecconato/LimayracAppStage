@@ -105,21 +105,41 @@ CREATE TABLE `sujet` (
     `DescriptifSujet`           text DEFAULT NULL,
     `DateDebut`                 varchar(10) DEFAULT NULL,
     `DateFin`                   varchar(10) DEFAULT NULL,
-    `Absence`                   boolean DEFAULT NULL,
-    `Retard`                    boolean DEFAULT NULL,
-    `IntegrationEquipe`         boolean DEFAULT NULL,
-    `Autonomie`                 boolean DEFAULT NULL,
-    `Adaptation`                boolean DEFAULT NULL,
-    `RealisationSatisfaisante`  boolean DEFAULT NULL,
-    `Curiosite`                 boolean DEFAULT NULL,
-    `EtudiantStage2ND`          boolean DEFAULT NULL,
-    `EtudiantStage1ERE`         boolean DEFAULT NULL,
-    `ParticipationE6`           boolean DEFAULT NULL,
     `IdEleveSujet`              int(11) DEFAULT NULL,
     `IdStatutSujet`             int(11) DEFAULT NULL,
     `IdProfesseurSujet`         int(11) DEFAULT NULL,
     `IdEntrepriseSujet`         int(11) DEFAULT NULL,
     `IdContactSujet`            int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `remplir`
+-- Realtion entre les tables `sujet` et `paramètre`
+--
+
+CREATE TABLE `remplir` (
+    `Valeur`                varchar(10) DEFAULT NULL,
+    `IdSujetRemplir`        int(11) DEFAULT NULL,
+    `IdParametreRemplir`    int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `paramètre`
+--
+
+CREATE TABLE `parametre` (
+    `IdParametre`      int(11) NOT NULL,
+    `LibelleParametre` varchar(35) DEFAULT NULL,
+    `IdGPParametre`    int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `GroupeParamètre`
+--
+
+CREATE TABLE `groupeParametre` (
+    `IdGP`                          int(11) NOT NULL,
+    `LibelleGP`                     varchar(35) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -309,6 +329,30 @@ ALTER TABLE `sujet`
     ADD KEY `FK_Sujet_IdProfesseur` (`IdProfesseurSujet`);
 
 --
+-- Index pour la table `remplir`
+--
+
+ALTER TABLE `remplir`
+    ADD PRIMARY KEY (`IdSujetRemplir`, `IdParametreRemplir`),
+    ADD KEY `FK_Remplir_IdSujet` (`IdSujetRemplir`),
+    ADD KEY `FK_Remplir_IdParametre` (`IdParametreRemplir`);
+
+--
+-- Index pour la table `parametre`
+--
+
+ALTER TABLE `parametre`
+    ADD PRIMARY KEY (`IdParametre`),
+    ADD KEY `FK_Parametre_IdGP` (`IdGPParametre`);
+
+--
+-- Index pour la table `groupeParametre`
+--
+
+ALTER TABLE `groupeParametre`
+    ADD PRIMARY KEY  (`IdGP`);
+
+--
 -- Index pour la table `utiliser`
 --
 
@@ -438,6 +482,20 @@ ALTER TABLE `sujet`
     MODiFY `IdSujet` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `parametre`
+--
+
+ALTER TABLE `parametre`
+    MODIFY `IdParametre` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `groupeParametre`
+--
+
+ALTER TABLE `groupeParametre`
+    MODIFY `IdGP` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `ressource`
 --
 
@@ -515,6 +573,21 @@ ALTER TABLE `sujet`
     ADD CONSTRAINT `FK_Sujet_IdProfesseur` FOREIGN KEY (`IdProfesseurSujet`) REFERENCES `professeur` (`IdProfesseur`),
     ADD CONSTRAINT `FK_Sujet_IdContact` FOREIGN KEY (`IdContactSujet`) REFERENCES `contact` (`IdContact`),
     ADD CONSTRAINT `FK_Sujet_IdEntreprise` FOREIGN KEY (`IdEntrepriseSujet`) REFERENCES `entreprise` (`idEntreprise`);
+
+--
+-- Contraintes pour la table `remplir`
+--
+
+ALTER TABLE `remplir`
+    ADD CONSTRAINT `FK_Remplir_IdSujet` FOREIGN KEY (`IdSujetRemplir`) REFERENCES `sujet` (`IdSujet`),
+    ADD CONSTRAINT `FK_Remplir_IdParametre` FOREIGN KEY (`IdParametreRemplir`) REFERENCES `parametre` (`IdParametre`);
+
+--
+-- Contraintes pour la table `groupe`
+--
+
+ALTER TABLE `parametre`
+    ADD CONSTRAINT `FK_Parametre_IdGP` FOREIGN KEY (`IdGPParametre`) REFERENCES `groupeParametre` (`IdGP`);
 
 --
 -- Contraintes pour la table `utiliser`
