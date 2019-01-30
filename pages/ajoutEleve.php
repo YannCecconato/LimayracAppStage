@@ -44,13 +44,15 @@
                     <p>Adresse : <input type="text" name="adresse" /></p>    
                     <p>Numéro de téléphone : <input type="text" name="phone"/></p>
                     <p>Adresse mail : <input type="text" name="email" required /></p>
-                    <p> <select name="cursus" required>
+                    <p> 
+                        <select name="cursus" required>
                             <option value=""> Choisissez un cursus </option>
                             <option value="SIO1"> SIO1 </option>
                             <option value="SIO2"> SIO2 </option>
                         </select>
                     </p>
-                    <p> <select name="option">
+                    <p> 
+                        <select name="option">
                             <option value=""> Choisissez une option </option>
                             <option value="SLAM"> Solutions Logicielles et Applications Métiers </option>    
                             <option value="SISR"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
@@ -90,7 +92,7 @@
                             if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un professeur */
-                                    $eleve -> insert($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $cursusEleve, $optionEleve);
+                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $cursusEleve, $optionEleve);
                                     header ("Location: gestion.php");
 
                             } else { /** L'email saisit est déjà utilisé */

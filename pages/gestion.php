@@ -36,7 +36,7 @@ session_start();
             </div>
             <div id="contenu">
 
-                <p>Voici la liste des étudiants que vous avez à charge.</p>
+                <p>Ici, vous pouvez gérer vos professeurs dont vous avez la charge ainsi que les élèves que vous voulez leur assigner.</p>
 
                 
 

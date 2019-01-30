@@ -10,8 +10,8 @@ class Eleve {
     private $adresseEleve = "?";
     private $telephoneEleve = "?";
     private $emailEleve = "?";
+    private $optionEleve = "?";
     private $libelleCursusEleve = "?";
-    private $idOptionEleve = 0;
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -196,6 +196,26 @@ class Eleve {
     public function setEmailEleve($emailEleve)
     {
         $this->emailEleve = $emailEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of optionEleve
+     */ 
+    public function getOptionEleve()
+    {
+        return $this->optionEleve;
+    }
+
+    /**
+     * Set the value of optionEleve
+     *
+     * @return  self
+     */ 
+    public function setOptionEleve($optionEleve)
+    {
+        $this->optionEleve = $optionEleve;
 
         return $this;
     }

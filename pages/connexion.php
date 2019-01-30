@@ -64,7 +64,7 @@
                             /** Stockage des variables dans une variable de session */
                             $_SESSION['email'] = $emailProfesseur;
                             $_SESSION['password'] = $password;
-                            $_SESSION['idQualiteProfesseur'] = "ResponsableSection";
+                            $_SESSION['idQualiteProfesseur'] = 1;
                             header ("Location: ../index.php"); /** Redirection vers la page d'acceuil */
 
                         } else { /** Les informations ne correspondent à aucun utilisateur */

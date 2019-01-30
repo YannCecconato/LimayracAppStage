@@ -31,25 +31,15 @@ USE `limayracappstage`;
 --
 
 CREATE TABLE `eleve` (
-    `IdEleve`            int(11) NOT NULL,
-    `PrenomEleve`        varchar(20) DEFAULT NULL,
-    `NomEleve`           varchar(20) DEFAULT NULL,
-    `GenreEleve`         varchar(1) DEFAULT NULL,
-    `AdresseEleve`       varchar(100) DEFAULT NULL,
-    `TelephoneEleve`     varchar(15) DEFAULT NULL,
-    `EmailEleve`         varchar(35) DEFAULT NULL,
-    `LibelleCursusEleve` varchar(20) DEFAULT NULL,
-    `IdOptionEleve`      int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Structure de la table `option`
---
-
-CREATE TABLE `option` (
-    `IdOption`          int(11) NOT NULL,
-    `LibelleOption`     varchar(50) DEFAULT NULL,
-    `DescriptifOption`  text DEFAULT NULL
+    `IdEleve`               int(11) NOT NULL,
+    `PrenomEleve`           varchar(20) DEFAULT NULL,
+    `NomEleve`              varchar(20) DEFAULT NULL,
+    `GenreEleve`            varchar(1) DEFAULT NULL,
+    `AdresseEleve`          varchar(100) DEFAULT NULL,
+    `TelephoneEleve`        varchar(15) DEFAULT NULL,
+    `EmailEleve`            varchar(50) DEFAULT NULL,
+    `OptionEleve`           varchar(15) DEFAULT NULL,
+    `LibelleCursusEleve`    varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -62,7 +52,7 @@ CREATE TABLE `professeur` (
     `NomProfesseur`         varchar(20) DEFAULT NULL,
     `GenreProfesseur`       varchar(1) DEFAULT NULL,
     `TelephoneProfesseur`   varchar(15) DEFAULT NULL,
-    `EmailProfesseur`       varchar(40) DEFAULT NULL,
+    `EmailProfesseur`       varchar(50) DEFAULT NULL,
     `MDP`                   varchar(255) NOT NULL,
     `IdQualiteProfesseur`   int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -276,15 +266,7 @@ CREATE TABLE `fonction` (
 
 ALTER TABLE `eleve`
     ADD PRIMARY KEY (`IdEleve`),
-    ADD KEY `FK_Eleve_IdOption` (`IdOptionEleve`),
     ADD KEY `FK_Eleve_LibelleCursus` (`LibelleCursusEleve`);
-
---
--- Index pour la table `option`
---
-
-ALTER TABLE `option`
-    ADD PRIMARY KEY (`IdOption`);
 
 --
 -- Index pour la table `professeur`
@@ -454,13 +436,6 @@ ALTER TABLE `eleve`
     MODIFY `IdEleve` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `option`
---
-
-ALTER TABLE `option`
-    MODIFY `IdOption` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `professeur`
 --
 
@@ -546,7 +521,6 @@ ALTER TABLE `fonction`
 --
 
 ALTER TABLE `eleve`
-    ADD CONSTRAINT `FK_Eleve_IdOption` FOREIGN KEY (`IdOptionEleve`) REFERENCES `option` (`IdOption`),
     ADD CONSTRAINT `FK_Eleve_LibelleCursus` FOREIGN KEY (`LibelleCursusEleve`) REFERENCES `cursus` (`LibelleCursus`);
 
 --

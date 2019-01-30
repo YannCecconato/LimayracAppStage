@@ -42,9 +42,9 @@ class ProfesseurDAO extends DAO {
     } 
 
 /** Fonction pour inscrire un professeur */
-    function inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp) {
-        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, MDP) ";
-        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :genreProfesseur, :telephoneProfesseur, :emailProfesseur, :mdp)";
+    function inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur) {
+        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, MDP, IdQualiteProfesseur) ";
+        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :genreProfesseur, :telephoneProfesseur, :emailProfesseur, :mdp, :idQualiteProfesseur)";
             try {
                 $sth = $this->pdo->prepare($sql);
                 $sth->execute(array(
@@ -53,7 +53,8 @@ class ProfesseurDAO extends DAO {
                     ':genreProfesseur' => $genreProfesseur,
                     ':telephoneProfesseur' => $telephoneProfesseur,
                     ':emailProfesseur' => $emailProfesseur,
-                    ':mdp' => $mdp
+                    ':mdp' => $mdp,
+                    ':idQualiteProfesseur' => $idQualiteProfesseur
                 ));
             } catch (PDOException $ex) {
                 die("Erreur lors de la requête SQL : " . $ex->getMessage());

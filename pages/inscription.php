@@ -35,17 +35,18 @@
                 <!-- Début du formulaire d'inscription -->
                 <form action="inscription.php" method="post" class="formulaire">
 
-                    <p>Nom : <input type="text" name="nom" required /></p>
-                    <p>Prénom : <input type="text" name="prenom" required /></p>
+                    <p >Nom : <input type="text" name="nom" required /></p>
+                    <p> Prénom : <input type="text" name="prenom" required /></p>
                     <p> <select name="genre">
                         <option value="Femme"> Femme </option>
                         <option value="Homme"> Homme </option>
                         </select>
                     </p>        
-                    <p>Numéro de téléphone : <input type="text" name="phone" required /></p>
-                    <p>Adresse Mail : <input type="text" name="email" required /></p>
-                    <p>Mot de passe : <input type="password" name="password" required /></p>
-                    <p>Confirmation mot de passe : <input type="password" name="confirm_pass" required /></p>
+                    <p> Numéro de téléphone : <input type="text" name="phone" required /></p>
+                    <p> Adresse Mail : <input type="text" name="email" required /></p>
+                    <p >Mot de passe : <input type="password" name="password" required /></p>
+                    <p> Confirmation mot de passe : <input type="password" name="confirm_pass" required /></p>
+                    <p> Qualité : <input type="text" name="idQualiteProfesseur" value="Responsable de section" disabled /></p>
                     <p><input type="submit" name="submit" value="S'inscrire" /><input type="reset" value="Réinitialiser"></p>
 
                 </form>
@@ -72,6 +73,7 @@
                             $emailProfesseur = $_POST['email'];
                             $password = $_POST['password'];
                             $password_confirm = $_POST['confirm_pass'];
+                            $idQualiteProfesseur = $_POST['idQualiteProfesseur'];
 
                             $professeur = new professeurDAO();
 
@@ -82,7 +84,7 @@
                                     $password = password_hash($password, PASSWORD_BCRYPT); /** Hachage du mot de passe */
 
                                     /** Création d'un professeur */
-                                    $professeur -> inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $password);
+                                    $professeur -> inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $password, $idQualiteProfesseur);
 
                                     isset($_SESSION) ? "" : session_start(); /** Démarrage d'une session */
                                     /** Stockage des variables dans une variable de session */
@@ -91,7 +93,7 @@
                                     $_SESSION['genre'] = $genreProfesseur;
                                     $_SESSION['phone'] = $telephoneProfesseur;
                                     $_SESSION['email'] = $emailProfesseur;
-                                    $_SESSION['idQualiteProfesseur'] = "ResponsableSection";
+                                    $_SESSION['idQualiteProfesseur'] = 1;
                                     header ("Location: ../index.php");
 
                                 } else { /** Si les 2 mots de passe ne sont pas identiques */
