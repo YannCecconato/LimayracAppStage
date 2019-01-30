@@ -36,7 +36,7 @@ session_start();
             </div>
             <div id="contenu">
 
-                <p>Ici, vous pouvez gérer vos professeurs dont vous avez la charge ainsi que les élèves que vous voulez leur assigner.</p>
+                <p>Ici, vous pouvez gérer vos élèves en ajoutant, consultant, supprimant ou modifiant leurs données.</p>
 
                 
 

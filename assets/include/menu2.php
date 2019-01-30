@@ -14,7 +14,7 @@
 
                             echo '<li class="right"><a href="deconnexion.php" class="a_menu"> Se déconnecter </a></li>';
                             echo '<li class="right"><a href="perso.php" class="a_menu"> Espace personnel </a></li>';
-                            echo '<li class="active"><a href="gestion.php" class="a_menu"> Gestion </a></li>';
+                            echo '<li class="active"><a href="gestionEleve.php" class="a_menu"> Élève </a></li>';
 
                         } else {
 

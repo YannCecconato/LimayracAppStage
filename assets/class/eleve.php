@@ -220,6 +220,26 @@ class Eleve {
         return $this;
     }
 
+    /**
+     * Get the value of libelleCursusEleve
+     */ 
+    public function getLibelleCursusEleve()
+    {
+        return $this->libelleCursusEleve;
+    }
+
+    /**
+     * Set the value of libelleCursusEleve
+     *
+     * @return  self
+     */ 
+    public function setLibelleCursusEleve($libelleCursusEleve)
+    {
+        $this->libelleCursusEleve = $libelleCursusEleve;
+
+        return $this;
+    }
+
     /* function hydrater */
     function hydrater(array $tableau) {
         foreach ($tableau as $cle => $valeur) {
