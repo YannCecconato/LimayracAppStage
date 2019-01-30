@@ -93,7 +93,7 @@
 
                                     /** Création d'un professeur */
                                     $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $cursusEleve);
-                                    header ("Location: gestion.php");
+                                    header ("Location: gestionEleve.php");
 
                             } else { /** L'email saisit est déjà utilisé */
 

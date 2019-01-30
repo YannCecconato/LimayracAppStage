@@ -37,8 +37,12 @@ class EleveDAO extends DAO {
             $row = $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
+        } if (count($row) != 1) {  /** 1 car count($row) vaut 1 lorsque $row est vide */
+            return true ;  /** Si $row contient des informations alors retourne vrai */
+        } else {
+            return false ; /** Si $row est vide alors retourne faux */
         }
-    }
+    } 
 
 }
 
