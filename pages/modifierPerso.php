@@ -3,7 +3,6 @@
     include "../assets/include/global.inc.php";
     session_start();
     
-    $oldpassword = $_SESSION['password'];
     $emailProfesseur = $_SESSION['email'];
     $professeurDAO = new professeurDAO();
     $professeur = $professeurDAO -> findByEmailProfesseur($emailProfesseur);

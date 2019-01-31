@@ -9,7 +9,7 @@ class EleveDAO extends DAO {
 
 /** function findAll() */ 
     function findAll() {
-        $sql = "select * from eleve";
+        $sql = "SELECT * FROM eleve";
         try {
             $sth = $this->pdo->prepare($sql);
             $sth->execute();
@@ -23,6 +23,22 @@ class EleveDAO extends DAO {
         }
         /** Retourne un tableau d'objets "eleve" */ 
         return $eleves;
+    }
+
+/** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
+    function findByIdEleve($idEleve){
+        $sql = "SELECT * FROM eleve WHERE IdEleve = :idEleve";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idEleve' => $idEleve
+            ));
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        $eleve = new eleve($row);
+        return $eleve; 
     }
 
 /** Fonction d'insertion des étudiants */    
@@ -43,6 +59,33 @@ class EleveDAO extends DAO {
         $nb = $sth->rowcount();
         return $nb; /** Retourne le nombre de mise à jour */
     }
+
+/** Fonction pour mettre à jour un élève */
+    function updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleursusEleve) {
+        $sql = "UPDATE Eleve SET ";
+        $sql .= "PrenomEleve = :prenomEleve, ";
+        $sql .= "nomEleve = :nomEleve, ";
+        $sql .= "GenreEleve = :genreEleve, ";
+        $sql .= "AdresseEleve = :adresseEleve, ";
+        $sql .= "TelephoneEleve = :telephoneEleve, ";
+        $sql .= "EmailEleve = :emailEleve, ";
+        $sql .= "OptionEleve = :optionEleve, ";
+        $sql .= "LibelleCursusElve = :libelleursusEleve ";
+        $sql .= "WHERE IdEleve = :idEleve";
+        $params = array(
+            ":nomEleve" => $nomEleve,
+            ":prenomEleve" => $prenomEleve,
+            ":genreEleve" => $genreEleve,
+            ":adresseEleve" => $adresseEleve,
+            ":telephoneEleve" => $telephoneEleve,
+            ":emailEleve" => $emailEleve,
+            ":optionEleve" => $optionEleve,
+            ":libelleursusEleve" => $libelleursusEleve
+        );
+        $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
+        $nb = $sth->rowcount();
+        return $nb;
+} 
 
 /** Fonction pour que 2 élèves ne puissent être inscrit avec la même adresse mail ou empêcher l'inscription de 2 fois le même élève */
     function is_mail_exist($emailEleve) {

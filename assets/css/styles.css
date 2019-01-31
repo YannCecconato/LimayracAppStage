@@ -99,6 +99,7 @@ ul.navbar li.right {float: right;}
 
 .formulaire input[type="text"], .formulaire input[type="password"]{
     height: 15px;
+    width: 250px;
 }
 
 .formulaire input[type="submit"], .formulaire input[type="reset"]{

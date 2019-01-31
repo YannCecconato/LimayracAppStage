@@ -37,7 +37,7 @@ session_start();
 
                     } else {
 
-                        echo '<p>Bienvenue sur le site de gestion des stages, veuillez vous connecter ou vous inscrire afin d\'avoir accès aux fonctionnalitées du site.</p>';
+                        echo '<p>Bienvenue sur le site de gestion des stages, veuillez vous connecter ou vous inscrire afin d\'avoir accès aux fonctionnalités du site.</p>';
 
                     }    
                 ?>

@@ -7,22 +7,6 @@ class ProfesseurDAO extends DAO {
         parent::__construct();
     }
 
-/** Fonction pour trouver les informations d'un professeur grâce à son adresse mail */
-    function findByEmailProfesseur($emailProfesseur) {
-        $sql = "SELECT * FROM professeur WHERE EmailProfesseur = :emailProfesseur";
-        try {
-            $sth = $this->pdo->prepare($sql);
-            $sth->execute(array(
-                ':emailProfesseur' => $emailProfesseur
-            ));
-            $row = $sth->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
-        }
-        $professeur = new professeur($row);
-        return $professeur; /** Retourne l'objet métier */
-}
-
 /** Fonction findAll() */
     function findAll() {
         $sql = "SELECT * FROM professeur";
@@ -40,6 +24,22 @@ class ProfesseurDAO extends DAO {
     /** Retourne un tableau d'objets "professeur" */ 
     return $professeur;
     } 
+
+/** Fonction pour trouver les informations d'un professeur grâce à son adresse mail */
+    function findByEmailProfesseur($emailProfesseur) {
+        $sql = "SELECT * FROM professeur WHERE EmailProfesseur = :emailProfesseur";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':emailProfesseur' => $emailProfesseur
+            ));
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        $professeur = new professeur($row);
+        return $professeur; /** Retourne l'objet métier */
+    }
 
 /** Fonction pour inscrire un professeur */
     function inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur) {

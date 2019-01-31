@@ -2,6 +2,7 @@
 
     include "../assets/include/global.inc.php";
     session_start();
+    
     $eleveDAO = new eleveDAO();
     $eleves = $eleveDAO->findAll();
 
@@ -37,7 +38,6 @@
 
                 echo "<table>";
                 echo "<tr>";
-                echo "<th>ID</th>";
                 echo "<th>Prénom</th>";
                 echo "<th>Nom</th>";
                 echo "<th>Genre</th>";
@@ -46,20 +46,21 @@
                 echo "<th>Email</th>";
                 echo "<th>Option</th>";
                 echo "<th>Cursus</th>";
+                echo "<th>Modifier</th>";
                 echo "</tr>";
 
                 foreach ($eleves as $eleve) {
 
                     echo "<tr>";
-                    echo "<td>". $eleve->getIdEleve() ."</td>";
-                    echo "<td>". $eleve->getPrenomEleve() ."</td>";
-                    echo "<td>". $eleve->getNomEleve() ."</td>";
-                    echo "<td>". $eleve->getGenreEleve() ."</td>";
-                    echo "<td>". $eleve->getAdresseEleve() ."</td>";
-                    echo "<td>". $eleve->getTelephoneEleve() ."</td>";
-                    echo "<td>". $eleve->getEmailEleve() ."</td>";
-                    echo "<td>". $eleve->getOptionEleve() ."</td>";
-                    echo "<td>". $eleve->getLibelleCursusEleve() ."</td>";
+                    echo "<td>". $eleve -> getPrenomEleve() ."</td>";
+                    echo "<td>". $eleve -> getNomEleve() ."</td>";
+                    echo "<td>". $eleve -> getGenreEleve() ."</td>";
+                    echo "<td>". $eleve -> getAdresseEleve() ."</td>";
+                    echo "<td>". $eleve -> getTelephoneEleve() ."</td>";
+                    echo "<td>". $eleve -> getEmailEleve() ."</td>";
+                    echo "<td>". $eleve -> getOptionEleve() ."</td>";
+                    echo "<td>". $eleve -> getLibelleCursusEleve() ."</td>";
+                    echo '<td><a href="modifierEleve.php?idEleve='. $eleve-> getIdEleve() .'"> Modifier </td>';
                     echo "</tr>";
 
                 }
