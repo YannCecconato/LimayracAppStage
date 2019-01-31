@@ -220,7 +220,7 @@ class Eleve {
         return $this;
     }
 
-    /* function hydrater */
+    /** function hydrater */
     function hydrater(array $tableau) {
         foreach ($tableau as $cle => $valeur) {
             $methode = 'set' . $cle;
@@ -228,7 +228,7 @@ class Eleve {
                     $this->$methode($valeur);
             }
         }
-    } /* function hydrater */
+    } /** function hydrater */
 
 }
 

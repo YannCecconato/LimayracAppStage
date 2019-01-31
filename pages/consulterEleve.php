@@ -2,7 +2,7 @@
 
     include "../assets/include/global.inc.php";
     session_start();
-    
+
     $eleveDAO = new eleveDAO();
     $eleves = $eleveDAO->findAll();
 
@@ -47,6 +47,7 @@
                 echo "<th>Option</th>";
                 echo "<th>Cursus</th>";
                 echo "<th>Modifier</th>";
+                echo "<th>Supprimer</th>";
                 echo "</tr>";
 
                 foreach ($eleves as $eleve) {
@@ -60,7 +61,8 @@
                     echo "<td>". $eleve -> getEmailEleve() ."</td>";
                     echo "<td>". $eleve -> getOptionEleve() ."</td>";
                     echo "<td>". $eleve -> getLibelleCursusEleve() ."</td>";
-                    echo '<td><a href="modifierEleve.php?idEleve='. $eleve-> getIdEleve() .'"> Modifier </td>';
+                    echo '<td><a href="modifierEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Modifier </td>';
+                    echo '<td><a href="supprimerEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Supprimer </td>';
                     echo "</tr>";
 
                 }

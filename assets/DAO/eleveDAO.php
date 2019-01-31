@@ -7,6 +7,22 @@ class EleveDAO extends DAO {
         parent::__construct();
     }
 
+/** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
+    function find($idEleve){
+        $sql = "SELECT * FROM eleve WHERE IdEleve = :idEleve";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idEleve' => $idEleve
+        ));
+    $row = $sth->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $ex) {
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+    }
+    $eleve = new Eleve($row);
+    return $eleve; 
+    }    
+
 /** function findAll() */ 
     function findAll() {
         $sql = "SELECT * FROM eleve";
@@ -17,29 +33,15 @@ class EleveDAO extends DAO {
         } catch (PDOException $e) {
             throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
         }
-        $eleves = array();
-        foreach ($rows as $row) {
-            $eleves[] = new eleve($row);
-        }
-        /** Retourne un tableau d'objets "eleve" */ 
-        return $eleves;
+    $eleves = array();
+    foreach ($rows as $row) {
+        $eleves[] = new eleve($row);
+    }
+    /** Retourne un tableau d'objets "eleve" */ 
+    return $eleves;
     }
 
-/** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
-    function findByIdEleve($idEleve){
-        $sql = "SELECT * FROM eleve WHERE IdEleve = :idEleve";
-        try {
-            $sth = $this->pdo->prepare($sql);
-            $sth->execute(array(
-                ':idEleve' => $idEleve
-            ));
-        $row = $sth->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $ex) {
-            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
-        }
-        $eleve = new eleve($row);
-        return $eleve; 
-    }
+
 
 /** Fonction d'insertion des étudiants */    
     function insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
@@ -61,17 +63,17 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction pour mettre à jour un élève */
-    function updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleursusEleve) {
-        $sql = "UPDATE Eleve SET ";
+    function updateByEmailEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
+        $sql = "UPDATE eleve SET ";
         $sql .= "PrenomEleve = :prenomEleve, ";
-        $sql .= "nomEleve = :nomEleve, ";
+        $sql .= "NomEleve = :nomEleve, ";
         $sql .= "GenreEleve = :genreEleve, ";
         $sql .= "AdresseEleve = :adresseEleve, ";
         $sql .= "TelephoneEleve = :telephoneEleve, ";
         $sql .= "EmailEleve = :emailEleve, ";
         $sql .= "OptionEleve = :optionEleve, ";
-        $sql .= "LibelleCursusElve = :libelleursusEleve ";
-        $sql .= "WHERE IdEleve = :idEleve";
+        $sql .= "LibelleCursusEleve = :libelleCursusEleve ";
+        $sql .= "WHERE EmailEleve = :emailEleve";
         $params = array(
             ":nomEleve" => $nomEleve,
             ":prenomEleve" => $prenomEleve,
@@ -80,7 +82,7 @@ class EleveDAO extends DAO {
             ":telephoneEleve" => $telephoneEleve,
             ":emailEleve" => $emailEleve,
             ":optionEleve" => $optionEleve,
-            ":libelleursusEleve" => $libelleursusEleve
+            ":libelleCursusEleve" => $libelleCursusEleve
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();
@@ -103,7 +105,20 @@ class EleveDAO extends DAO {
         } else {
             return false ; /** Si $row est vide alors retourne faux */
         }
-    } 
+    }
+    
+/** function delete(), supprime un motif de frais */ 
+    function delete($idEleve) {
+        $sql = "DELETE FROM eleve WHERE IdEleve=:idEleve";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ":idEleve" => $idEleve
+            ));
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+  }
 
 }
 

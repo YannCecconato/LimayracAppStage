@@ -33,7 +33,7 @@ class ProfesseurDAO extends DAO {
             $sth->execute(array(
                 ':emailProfesseur' => $emailProfesseur
             ));
-            $row = $sth->fetch(PDO::FETCH_ASSOC);
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
         }

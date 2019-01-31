@@ -5,7 +5,7 @@
     
     $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
     $eleveDAO = new eleveDAO();
-    $eleve = $eleveDAO -> findByIdEleve($idEleve);
+    $eleve = $eleveDAO -> find($idEleve);
 
 ?>
 
@@ -45,7 +45,7 @@
                 <p>Sexe : <input type="text" name="genre" value="<?php echo $eleve -> getGenreEleve(); ?>"/></p>
                 <p>Adresse : <input type="text" name="adresse" value="<?php echo $eleve -> getAdresseEleve(); ?>"/></p>
                 <p>Téléphone : <input type="text" name="phone" value="<?php echo $eleve -> getTelephoneEleve(); ?>"/></p>
-                <p>Adresse mail : <input type="text" name="email" value="<?php echo $eleve -> getEmailEleve(); ?>" disabled/></p>
+                <p>Adresse mail : <input type="text" name="email" value="<?php echo $eleve -> getEmailEleve(); ?>"/></p>
                 <p>Option : <input type="text" name="option" value="<?php echo $eleve -> getOptionEleve(); ?>"/></p>
                 <p>Cursus : <input type="text" name="cursus" value="<?php echo $eleve -> getLibelleCursusEleve(); ?>"/></p>
                 <p><input type="submit" name="submit" value="Modifier" /></p>
@@ -68,12 +68,12 @@
                     $telephoneEleve = $_POST['phone'];
                     $emailEleve = $_POST['email'];
                     $optionEleve = $_POST['option'];
-                    $libelleursusEleve = $_POST['cursus'];
+                    $libelleCursusEleve = $_POST['cursus'];
 
                     $updateEleve = new eleveDAO();
     
-                            $updateEleve -> updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleursusEleve);
-                            header ("Location: consulterEleve.php");
+                        $updateEleve -> updateByEmailEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
+                        header ("Location: consulterEleve.php");
 
                     }
                 
