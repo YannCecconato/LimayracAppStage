@@ -3,7 +3,18 @@
     include "../assets/include/global.inc.php";
     session_start();
     
-    $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
+    /** isset : Détermine si "submit" est une variable définie */
+    if (isset($submit)) {
+
+        $idEleve = $_SESSION['idEleve'];
+
+    } else {
+
+        $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
+        $_SESSION['idEleve'] = $idEleve;
+
+    }
+
     $eleveDAO = new eleveDAO();
     $eleve = $eleveDAO -> find($idEleve);
 
@@ -55,7 +66,7 @@
                 
                 <?php
 
-                /** Récupère les champs du formulaire */
+                /** Récupère le champ "submit" du formulaire */
                 $submit = isset($_POST['submit']) ? $_POST['submit'] : "";
                 
                 if ($submit) {
@@ -72,10 +83,12 @@
 
                     $updateEleve = new eleveDAO();
     
-                        $updateEleve -> updateByEmailEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
-                        header ("Location: consulterEleve.php");
+                    $updateEleve -> updateByEmailEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
+                    header ("Location: consulterEleve.php");
 
-                    }
+                    print_r($eleve);
+            
+                }
                 
                 ?>
 

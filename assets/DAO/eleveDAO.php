@@ -19,8 +19,19 @@ class EleveDAO extends DAO {
     } catch (PDOException $ex) {
         throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
     }
-    $eleve = new Eleve($row);
-    return $eleve; 
+
+    /*$eleve = new Eleve($row);
+    return $row;*/
+    if ($row == NULL) {
+
+        return NULL;
+
+    } else {
+
+        $eleve = new Eleve($row);
+        return $eleve;
+
+    }
     }    
 
 /** function findAll() */ 

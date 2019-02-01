@@ -46,7 +46,7 @@
                     <p> Adresse Mail : <input type="text" name="email" required /></p>
                     <p >Mot de passe : <input type="password" name="password" required /></p>
                     <p> Confirmation mot de passe : <input type="password" name="confirm_pass" required /></p>
-                    <p> Qualité : <input type="text" name="idQualiteProfesseur" value="Responsable de section" disabled /></p>
+                    <p><input type="hidden" name="idQualiteProfesseur" value="Responsable de section"/></p>
                     <p><input type="submit" name="submit" value="S'inscrire" /><input type="reset" value="Réinitialiser"></p>
 
                 </form>

@@ -29,14 +29,14 @@ session_start();
 
                 <?php
                 
-                include "../assets/include/menuGestionEleve.php";
+                include "../assets/include/menuGestionProfesseur.php";
                 
                 ?>
                 
             </div>
             <div id="contenu">
 
-                <p>Ici, vous pouvez gérer vos élèves en ajoutant, consultant, supprimant ou modifiant leurs données.</p>
+                <p>Ici, vous pouvez gérer les professeurs référents en ajoutant, consultant, supprimant ou modifiant leurs données.</p>
                 
 
             </div> 
