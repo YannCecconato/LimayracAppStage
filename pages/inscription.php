@@ -46,7 +46,7 @@
                     <p> Adresse Mail : <input type="text" name="email" required /></p>
                     <p >Mot de passe : <input type="password" name="password" required /></p>
                     <p> Confirmation mot de passe : <input type="password" name="confirm_pass" required /></p>
-                    <p><input type="hidden" name="idQualiteProfesseur" value="Responsable de section"/></p>
+                    <p><input type="hidden" name="idQualiteProfesseur" value="1"/></p>
                     <p><input type="submit" name="submit" value="S'inscrire" /><input type="reset" value="Réinitialiser"></p>
 
                 </form>
@@ -84,7 +84,7 @@
                                     $password = password_hash($password, PASSWORD_BCRYPT); /** Hachage du mot de passe */
 
                                     /** Création d'un professeur */
-                                    $professeur -> inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $password, $idQualiteProfesseur);
+                                    $professeur -> inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $password, $idQualiteProfesseur);
 
                                     isset($_SESSION) ? "" : session_start(); /** Démarrage d'une session */
                                     /** Stockage des variables dans une variable de session */
@@ -93,7 +93,7 @@
                                     $_SESSION['genre'] = $genreProfesseur;
                                     $_SESSION['phone'] = $telephoneProfesseur;
                                     $_SESSION['email'] = $emailProfesseur;
-                                    $_SESSION['idQualiteProfesseur'] = 1;
+                                    $_SESSION['idQualiteProfesseur'] = $idQualiteProfesseur;
                                     header ("Location: ../index.php");
 
                                 } else { /** Si les 2 mots de passe ne sont pas identiques */

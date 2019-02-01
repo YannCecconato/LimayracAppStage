@@ -42,7 +42,7 @@ class ProfesseurDAO extends DAO {
     }
 
 /** Fonction pour inscrire un professeur */
-    function inscription_professeur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur) {
+    function inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur) {
         $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, MDP, IdQualiteProfesseur) ";
         $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :genreProfesseur, :telephoneProfesseur, :emailProfesseur, :mdp, :idQualiteProfesseur)";
             try {
@@ -57,7 +57,9 @@ class ProfesseurDAO extends DAO {
                     ':idQualiteProfesseur' => $idQualiteProfesseur
                 ));
             } catch (PDOException $ex) {
+
                 die("Erreur lors de la requête SQL : " . $ex->getMessage());
+
             }    
     }
 
@@ -97,9 +99,13 @@ class ProfesseurDAO extends DAO {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         }
         if (count($row) != 1) {  /** 1 car count($row) vaut 1 lorsque $row est vide */
+
             return true ;  /** Si $row contient des informations alors retourne vrai */
+
         } else {
+
             return false ; /** Si $row est vide alors retourne faux */
+
         }
     }
 
@@ -118,9 +124,13 @@ class ProfesseurDAO extends DAO {
                 die("Erreur lors de la requête SQL : " . $ex->getMessage());
             }
             if (password_verify($mdp, $row['MDP']) && $emailProfesseur == $row["EmailProfesseur"]) {   // Verification que le mot de passe est bien le bon
+
                 return true;    // Si tout est bon retourne vrai
+
             } else {
+
                 return false;   // Si le mot de passe ou le mail est faux, retourne faux
+
             }
             
     }

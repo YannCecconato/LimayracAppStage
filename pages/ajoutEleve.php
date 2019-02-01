@@ -84,15 +84,15 @@
                             $adresseEleve = $_POST['adresse'];
                             $telephoneEleve = $_POST['phone'];
                             $emailEleve = $_POST['email'];
-                            $cursusEleve = $_POST['cursus'];
                             $optionEleve = $_POST['option'];
+                            $libelleCursusEleve = $_POST['cursus'];
 
                             $eleve = new EleveDAO();
 
                             if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un professeur */
-                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $cursusEleve);
+                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
                                     header ("Location: gestionEleve.php");
 
                             } else { /** L'email saisit est déjà utilisé */
