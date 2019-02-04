@@ -3,8 +3,10 @@
 class EleveDAO extends DAO {
 
     // Constructeur
-    function __construct(){
+    function __construct() {
+
         parent::__construct();
+        
     }
 
 /** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
@@ -19,9 +21,6 @@ class EleveDAO extends DAO {
     } catch (PDOException $ex) {
         throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
     }
-
-    /*$eleve = new Eleve($row);
-    return $row;*/
     if ($row == NULL) {
 
         return NULL;
@@ -46,13 +45,15 @@ class EleveDAO extends DAO {
         }
     $eleves = array();
     foreach ($rows as $row) {
+
         $eleves[] = new eleve($row);
+
     }
+
     /** Retourne un tableau d'objets "eleve" */ 
     return $eleves;
+
     }
-
-
 
 /** Fonction d'insertion des étudiants */    
     function insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
@@ -74,7 +75,7 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction pour mettre à jour un élève */
-    function updateByEmailEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
+    function updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
         $sql = "UPDATE eleve SET ";
         $sql .= "PrenomEleve = :prenomEleve, ";
         $sql .= "NomEleve = :nomEleve, ";
@@ -84,7 +85,7 @@ class EleveDAO extends DAO {
         $sql .= "EmailEleve = :emailEleve, ";
         $sql .= "OptionEleve = :optionEleve, ";
         $sql .= "LibelleCursusEleve = :libelleCursusEleve ";
-        $sql .= "WHERE EmailEleve = :emailEleve";
+        $sql .= "WHERE IdEleve = :idEleve";
         $params = array(
             ":nomEleve" => $nomEleve,
             ":prenomEleve" => $prenomEleve,
@@ -93,7 +94,8 @@ class EleveDAO extends DAO {
             ":telephoneEleve" => $telephoneEleve,
             ":emailEleve" => $emailEleve,
             ":optionEleve" => $optionEleve,
-            ":libelleCursusEleve" => $libelleCursusEleve
+            ":libelleCursusEleve" => $libelleCursusEleve,
+            ":idEleve" => $idEleve
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();

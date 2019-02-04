@@ -17,7 +17,9 @@
                             echo '<li class="active"><a href="pages/gestionEleve.php" class="a_menu"> Élève </a></li>';
                             echo '<li class="active"><a href="pages/gestionProfesseur.php" class="a_menu"> Professeur </a></li>';
 
-                        } else {
+                        } else if ($_SESSION['idQualiteProfesseur'] == 2) { /** Si le professeur est un professeur référent */
+
+                            
 
                         }
 

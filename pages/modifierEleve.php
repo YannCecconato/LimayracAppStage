@@ -41,16 +41,17 @@
                     ?>
                 </ul>
             </div>
-            <div>
-                
-            </div>
+
             <div id="contenu">
+
+                <?php var_dump($eleve); ?>
 
                 <p>Vous pouvez, si vous le souhaitez, modifier les informations de <?php echo "". $eleve -> getNomEleve() ." ". $eleve -> getPrenomEleve() .""; ?> dans le formulaire ci-dessous.</p>
                 
                 <!-- Début du formulaire -->
                 <form action="modifierEleve.php" method="post" class="formulaire">
 
+                <p><input type="hidden" name="idEleve" value="<?php $eleve -> getIdEleve(); ?>"/></p>
                 <p>Nom : <input type="text" name="nom" value="<?php echo $eleve -> getNomEleve(); ?>" /></p>
                 <p>Prénom : <input type="text" name="prenom" value="<?php echo $eleve -> getPrenomEleve(); ?>"/></p>
                 <p>Sexe : <input type="text" name="genre" value="<?php echo $eleve -> getGenreEleve(); ?>"/></p>
@@ -72,6 +73,7 @@
                 if ($submit) {
 
                     /** Récupère les variables du formulaire */
+                    $idEleve = $_POST['idEleve'];
                     $nomEleve = $_POST['nom'];
                     $prenomEleve = $_POST['prenom'];
                     $genreEleve = $_POST['genre'];
@@ -83,10 +85,8 @@
 
                     $updateEleve = new eleveDAO();
     
-                    $updateEleve -> updateByEmailEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
+                    $updateEleve -> updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
                     header ("Location: consulterEleve.php");
-
-                    print_r($eleve);
             
                 }
                 

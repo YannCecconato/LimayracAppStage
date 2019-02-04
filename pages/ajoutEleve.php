@@ -58,7 +58,7 @@
                             <option value="SISR"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
                         </select>
                     </p>    
-                    <p><input type="submit" name="submit" value="Inscrire l'élève" /><input type="reset" value="Réinitialiser"></p>
+                    <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"></p>
 
                 </form>
                 <!-- Fin du formulaire d'inscription de l'élève-->

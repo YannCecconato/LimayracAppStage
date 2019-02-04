@@ -1,6 +1,6 @@
 <html>
     <nav>
-        <div id="menuperso">
+        <div id="menu">
             <ul>
 
                 <li class="active"><a href="consulterProfesseur.php" class="a_menuperso"> Consulter les professeurs </a></li>

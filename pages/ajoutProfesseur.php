@@ -3,6 +3,8 @@
     include "../assets/include/global.inc.php";
     session_start();
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,7 @@
             </div>
             <div id="contenu">
 
-                <!-- Début du formulaire d'inscription du professeur référent-->
+                <!-- Début du formulaire d'inscription du professeur référent -->
                 <form action="ajoutProfesseur.php" method="post" class="formulaire">
 
                     <p>Prénom : <input type="text" name="prenom" required /></p>
@@ -42,11 +44,12 @@
                         </select>
                     </p>
                     <p>Numéro de téléphone : <input type="text" name="phone"/></p>
-                    <p>Adresse mail : <input type="text" name="email" required /></p>    
-                    <p><input type="submit" name="submit" value="Inscrire l'élève" /><input type="reset" value="Réinitialiser"></p>
+                    <p>Adresse mail : <input type="text" name="email" required /></p>
+                    <p><input type="hidden" name="idQualiteProfesseur" value="2"/></p>    
+                    <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"/></p>
 
                 </form>
-                <!-- Fin du formulaire d'inscription de l'élève-->
+                <!-- Fin du formulaire d'inscription du professeur référent -->
 
 
                 <?php    
@@ -63,22 +66,20 @@
                         if ($email_valide) { /* Vérifie si c'est un mail du type bla@bla.com */
 
                             /** Récupère les variables du formulaire */
-                            $prenomEleve = $_POST['prenom'];
-                            $nomEleve = $_POST['nom'];
-                            $genreEleve = $_POST['genre'];
-                            $adresseEleve = $_POST['adresse'];
-                            $telephoneEleve = $_POST['phone'];
-                            $emailEleve = $_POST['email'];
-                            $cursusEleve = $_POST['cursus'];
-                            $optionEleve = $_POST['option'];
+                            $prenomProfesseur = $_POST['prenom'];
+                            $nomProfesseur = $_POST['nom'];
+                            $genreProfesseur = $_POST['genre'];
+                            $telephoneProfesseur = $_POST['phone'];
+                            $emailProfesseur = $_POST['email'];
+                            $idQualiteProfesseur = $_POST['idQualiteProfesseur'];
 
-                            $eleve = new EleveDAO();
+                            $newprofesseur = new ProfesseurDAO();
 
-                            if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
+                            if ($newprofesseur->is_mail_exist($emailProfesseur) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un professeur */
-                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $cursusEleve);
-                                    header ("Location: gestionEleve.php");
+                                    $newprofesseur -> inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $idQualiteProfesseur);
+                                    header ("Location: gestionProfesseur.php");
 
                             } else { /** L'email saisit est déjà utilisé */
 

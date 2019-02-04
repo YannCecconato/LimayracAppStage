@@ -7,6 +7,30 @@ class ProfesseurDAO extends DAO {
         parent::__construct();
     }
 
+/** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
+    function find($idProfesseur){
+        $sql = "SELECT * FROM professeur WHERE IdProfesseur = :idProfesseur";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idProfesseur' => $idProfesseur
+        ));
+    $row = $sth->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $ex) {
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+    }
+    if ($row == NULL) {
+
+        return NULL;
+
+    } else {
+
+        $professeur = new Professeur($row);
+        return $professeur;
+
+    }
+    }
+
 /** Fonction findAll() */
     function findAll() {
         $sql = "SELECT * FROM professeur";
@@ -41,6 +65,22 @@ class ProfesseurDAO extends DAO {
         return $professeur; /** Retourne l'objet métier */
     }
 
+/** Fonction pour trouver les informations d'un professeur grâce à son adresse mail */
+    function findByIdQualiteProfesseur($idQualiteProfesseur) {
+        $sql = "SELECT * FROM professeur WHERE IdQualiteProfesseur = :idQualiteProfesseur";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idQualiteProfesseur' => $idQualiteProfesseur
+            ));
+        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        $professeur = new professeur($row);
+        return $professeur; /** Retourne l'objet métier */
+    }
+
 /** Fonction pour inscrire un professeur */
     function inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur) {
         $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, MDP, IdQualiteProfesseur) ";
@@ -62,6 +102,27 @@ class ProfesseurDAO extends DAO {
 
             }    
     }
+
+/** Fonction pour inscrire un professeur par le Responsable de Section */
+    function inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $idQualiteProfesseur) {
+        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, IdQualiteProfesseur) ";
+        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :genreProfesseur, :telephoneProfesseur, :emailProfesseur, :idQualiteProfesseur)";
+            try {
+                $sth = $this->pdo->prepare($sql);
+                $sth->execute(array(
+                    ':prenomProfesseur' => $prenomProfesseur,
+                    ':nomProfesseur' => $nomProfesseur,
+                    ':genreProfesseur' => $genreProfesseur,
+                    ':telephoneProfesseur' => $telephoneProfesseur,
+                    ':emailProfesseur' => $emailProfesseur,
+                    ':idQualiteProfesseur' => $idQualiteProfesseur
+                ));
+            } catch (PDOException $ex) {
+
+                die("Erreur lors de la requête SQL : " . $ex->getMessage());
+
+            }    
+    }    
 
 /** Fonction pour mettre à jour un professeur */
     function updateByEmailProfesseur($nomProfesseur, $prenomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp) {

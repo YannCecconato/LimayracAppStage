@@ -6,17 +6,17 @@
     /** isset : Détermine si "submit" est une variable définie */
     if (isset($submit)) {
 
-        $idEleve = $_SESSION['idEleve'];
+        $idProfesseur = $_SESSION['idProfesseur'];
 
     } else {
 
-        $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
-        $_SESSION['idEleve'] = $idEleve;
+        $idProfesseur = isset($_GET['idProfesseur']) ? $_GET['idProfesseur'] : "";
+        $_SESSION['idProfesseur'] = $idProfesseur;
 
     }
     
-    $eleveDAO = new eleveDAO();
-    $eleve = $eleveDAO -> find($idEleve);
+    $professeurDAO = new professeurDAo();
+    $professeur = $professeurDAO -> find($idProfesseur);
 
 ?>
 
@@ -46,20 +46,16 @@
             </div>
             <div id="contenu">
 
-                <p>Données de l'élève <?php echo "". $eleve -> getNomEleve() ." ". $eleve -> getPrenomEleve() .""; ?>.</p>
+                <p>Données du professeur <?php echo "". $professeur -> getNomProfesseur() ." ". $professeur -> getPrenomProfesseur() .""; ?>.</p>
                 
                 <!-- Début du formulaire -->
-                <form action="modifierEleve.php" method="post" class="formulaire">
+                <form action="modifierProfesseur.php" method="post" class="formulaire">
 
-                <p><input type="hidden" name="idEleve" value="<?php $eleve -> getIdEleve(); ?>"/></p>
-                <p> Nom : <strong> <?php echo $eleve -> getNomEleve(); ?> </strong></p>
-                <p> Prénom : <strong> <?php echo $eleve -> getPrenomEleve(); ?> </strong></p>
-                <p> Sexe : <strong> <?php echo $eleve -> getGenreEleve(); ?> </strong></p>
-                <p> Adresse : <strong> <?php echo $eleve -> getAdresseEleve(); ?> </strong></p>
-                <p> Téléphone : <strong> <?php echo $eleve -> getTelephoneEleve(); ?> </strong></p>
-                <p> Mail : <strong> <?php echo $eleve -> getEmailEleve(); ?> </strong></p>
-                <p> Option : <strong> <?php echo $eleve -> getOptionEleve(); ?> </strong></p>
-                <p> Cursus : <strong> <?php echo $eleve -> getLibelleCursusEleve(); ?> </strong></p>
+                <p> Nom : <strong> <?php echo $professeur -> getNomProfesseur(); ?> </strong></p>
+                <p> Prénom : <strong> <?php echo $professeur -> getPrenomProfesseur(); ?> </strong></p>
+                <p> Sexe : <strong> <?php echo $professeur -> getGenreProfesseur(); ?> </strong></p>
+                <p> Téléphone : <strong> <?php echo $professeur -> getTelephoneProfesseur(); ?> </strong></p>
+                <p> Mail : <strong> <?php echo $professeur -> getEmailProfesseur(); ?> </strong></p>
                 <p><input type="submit" name="submit" value="Supprimer" /></p>
 
                 </form>
@@ -78,12 +74,16 @@
                     if ($submit) {
 
                         /** Récupère les variables du formulaire */
-                        $idEleve = $_POST['idEleve'];
+                        $nomProfesseur = $_POST['nom'];
+                        $prenomProfesseur = $_POST['prenom'];
+                        $genreProfesseur = $_POST['genre'];
+                        $telephoneProfesseur = $_POST['phone'];
+                        $emailProfesseur = $_POST['email'];
     
-                        $deleteEleve = new eleveDAO();
+                        $deleteProfesseur = new professeurDAO();
     
-                        $deleteEleve -> delete($idEleve);
-                        header ("Location: consulterEleve.php");
+                        $deleteProfesseur -> delete($idProfesseur);
+                        header ("Location: consulterProfesseur.php");
                 
                     }
                 
