@@ -14,8 +14,9 @@
 
                             echo '<li class="right"><a href="pages/deconnexion.php" class="a_menu">Se déconnecter</a></li>';
                             echo '<li class="right"><a href="pages/perso.php" class="a_menu"> Espace personnel </a></li>';
-                            echo '<li class="active"><a href="pages/gestionEleve.php" class="a_menu"> Élève </a></li>';
-                            echo '<li class="active"><a href="pages/gestionProfesseur.php" class="a_menu"> Professeur </a></li>';
+                            echo '<li class="active"><a href="pages/gestionEleve.php" class="a_menu"> Élèves </a></li>';
+                            echo '<li class="active"><a href="pages/gestionProfesseur.php" class="a_menu"> Professeurs </a></li>';
+                            echo '<li class="active"><a href="pages/gestionEntreprise.php" class="a_menu"> Entreprises </a></li>';
 
                         } else if ($_SESSION['idQualiteProfesseur'] == 2) { /** Si le professeur est un professeur référent */
 

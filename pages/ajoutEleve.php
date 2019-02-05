@@ -91,7 +91,7 @@
 
                             if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
-                                    /** Création d'un professeur */
+                                    /** Création d'un élève */
                                     $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
                                     header ("Location: gestionEleve.php");
 

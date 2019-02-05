@@ -3,17 +3,8 @@
     include "../assets/include/global.inc.php";
     session_start();
     
-    /** isset : Détermine si "submit" est une variable définie */
-    if (isset($submit)) {
 
-        $idEleve = $_SESSION['idEleve'];
-
-    } else {
-
-        $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
-        $_SESSION['idEleve'] = $idEleve;
-
-    }
+    $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
 
     $eleveDAO = new eleveDAO();
     $eleve = $eleveDAO -> find($idEleve);
@@ -44,12 +35,10 @@
 
             <div id="contenu">
 
-                <?php var_dump($eleve); ?>
-
                 <p>Vous pouvez, si vous le souhaitez, modifier les informations de <?php echo "". $eleve -> getNomEleve() ." ". $eleve -> getPrenomEleve() .""; ?> dans le formulaire ci-dessous.</p>
                 
                 <!-- Début du formulaire -->
-                <form action="modifierEleve.php" method="post" class="formulaire">
+                <form action="modifierEleve.php?idEleve=<?php echo $eleve -> getIdEleve(); ?>" method="post" class="formulaire">
 
                 <p><input type="hidden" name="idEleve" value="<?php $eleve -> getIdEleve(); ?>"/></p>
                 <p>Nom : <input type="text" name="nom" value="<?php echo $eleve -> getNomEleve(); ?>" /></p>
@@ -85,7 +74,7 @@
 
                     $updateEleve = new eleveDAO();
     
-                    $updateEleve -> updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
+                    $updateEleve -> updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
                     header ("Location: consulterEleve.php");
             
                 }

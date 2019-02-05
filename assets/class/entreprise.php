@@ -6,6 +6,7 @@ class Entreprise {
     private $idEntreprise = 0;
     private $denomination = "?";
     private $adresseEntreprise = "?";
+    private $cp = "?";
     private $ville = "?";
     private $telephoneEntreprise = "?";
     private $fax = "?";
@@ -75,6 +76,26 @@ class Entreprise {
     public function setAdresseEntreprise($adresseEntreprise)
     {
         $this->adresseEntreprise = $adresseEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of cp
+     */ 
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set the value of cp
+     *
+     * @return  self
+     */ 
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
 
         return $this;
     }

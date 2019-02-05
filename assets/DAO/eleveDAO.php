@@ -75,7 +75,7 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction pour mettre à jour un élève */
-    function updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
+    function updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
         $sql = "UPDATE eleve SET ";
         $sql .= "PrenomEleve = :prenomEleve, ";
         $sql .= "NomEleve = :nomEleve, ";
@@ -100,7 +100,7 @@ class EleveDAO extends DAO {
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();
         return $nb;
-} 
+}
 
 /** Fonction pour que 2 élèves ne puissent être inscrit avec la même adresse mail ou empêcher l'inscription de 2 fois le même élève */
     function is_mail_exist($emailEleve) {
