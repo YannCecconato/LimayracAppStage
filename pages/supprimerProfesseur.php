@@ -2,20 +2,11 @@
 
     include "../assets/include/global.inc.php";
     session_start();
-    
-    /** isset : Détermine si "submit" est une variable définie */
-    if (isset($submit)) {
 
-        $idProfesseur = $_SESSION['idProfesseur'];
 
-    } else {
+    $idProfesseur = isset($_GET['idProfesseur']) ? $_GET['idProfesseur'] : "";
 
-        $idProfesseur = isset($_GET['idProfesseur']) ? $_GET['idProfesseur'] : "";
-        $_SESSION['idProfesseur'] = $idProfesseur;
-
-    }
-    
-    $professeurDAO = new professeurDAo();
+    $professeurDAO = new professeurDAO();
     $professeur = $professeurDAO -> find($idProfesseur);
 
 ?>
@@ -49,8 +40,9 @@
                 <p>Données du professeur <?php echo "". $professeur -> getNomProfesseur() ." ". $professeur -> getPrenomProfesseur() .""; ?>.</p>
                 
                 <!-- Début du formulaire -->
-                <form action="modifierProfesseur.php" method="post" class="formulaire">
+                <form action="supprimerProfesseur.php?idProfesseur=<?php echo $professeur -> getIdProfesseur(); ?>" method="post" class="formulaire">
 
+                <p><input type="hidden" name="idProfesseur" value="<?php echo $professeur -> getIdProfesseur(); ?>"/></p>
                 <p> Nom : <strong> <?php echo $professeur -> getNomProfesseur(); ?> </strong></p>
                 <p> Prénom : <strong> <?php echo $professeur -> getPrenomProfesseur(); ?> </strong></p>
                 <p> Sexe : <strong> <?php echo $professeur -> getGenreProfesseur(); ?> </strong></p>
@@ -74,15 +66,11 @@
                     if ($submit) {
 
                         /** Récupère les variables du formulaire */
-                        $nomProfesseur = $_POST['nom'];
-                        $prenomProfesseur = $_POST['prenom'];
-                        $genreProfesseur = $_POST['genre'];
-                        $telephoneProfesseur = $_POST['phone'];
-                        $emailProfesseur = $_POST['email'];
+                        $idProfesseur = $_POST['idProfesseur'];
     
                         $deleteProfesseur = new professeurDAO();
     
-                        $deleteProfesseur -> delete($idProfesseur);
+                        $deleteProfesseur -> deleteByIdProfesseur($idProfesseur);
                         header ("Location: consulterProfesseur.php");
                 
                     }

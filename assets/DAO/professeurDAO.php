@@ -196,6 +196,21 @@ class ProfesseurDAO extends DAO {
             
     }
 
+/** Fonction pour supprimer un élève avec son ID */ 
+    function deleteByIdProfesseur($idProfesseur) {
+        $sql = "DELETE FROM professeur WHERE IdProfesseur = :idProfesseur";
+        try {
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute(array(
+                        ":idProfesseur" => $idProfesseur
+                        ));
+        } catch (PDOException $e) {
+
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+
+        }
+    }
+
 }
 
 

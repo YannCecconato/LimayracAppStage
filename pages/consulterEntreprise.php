@@ -59,8 +59,8 @@
                     echo "<td>". $entreprise -> getTelephoneEntreprise() ."</td>";
                     echo "<td>". $entreprise -> getFax() ."</td>";
                     echo '<td> <a href="../assets/icone/moins.png"> <img src="../assets/icone/moins.png" alt="moins" width="32" height="32"/></a> '. $entreprise -> getNombreStage() .' <a href="../assets/icone/plus.png"> <img src="../assets/icone/plus.png" alt="plus" width="32" height="32"/> </a></td>';
-                    echo '<td><a href="modifierEleve.php?idEntreprise='. $entreprise -> getIdEntreprise() .'"> Modifier </td>';
-                    echo '<td><a href="supprimerEleve.php?idEntreprise='. $entreprise -> getIdEntreprise() .'"> Supprimer </td>';
+                    echo '<td><a href="modifierEntreprise.php?idEntreprise='. $entreprise -> getIdEntreprise() .'"> Modifier </td>';
+                    echo '<td><a href="supprimerEntreprise.php?idEntreprise='. $entreprise -> getIdEntreprise() .'"> Supprimer </td>';
                     echo "</tr>";
 
                 }

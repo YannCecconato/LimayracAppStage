@@ -40,7 +40,7 @@
                 <!-- Début du formulaire -->
                 <form action="modifierEleve.php?idEleve=<?php echo $eleve -> getIdEleve(); ?>" method="post" class="formulaire">
 
-                <p><input type="hidden" name="idEleve" value="<?php $eleve -> getIdEleve(); ?>"/></p>
+                <p><input type="hidden" name="idEleve" value="<?php echo $eleve -> getIdEleve(); ?>"/></p>
                 <p>Nom : <input type="text" name="nom" value="<?php echo $eleve -> getNomEleve(); ?>" /></p>
                 <p>Prénom : <input type="text" name="prenom" value="<?php echo $eleve -> getPrenomEleve(); ?>"/></p>
                 <p>Sexe : <input type="text" name="genre" value="<?php echo $eleve -> getGenreEleve(); ?>"/></p>
@@ -71,11 +71,22 @@
                     $emailEleve = $_POST['email'];
                     $optionEleve = $_POST['option'];
                     $libelleCursusEleve = $_POST['cursus'];
+                    
+                    /** Si la syntaxe pour modifier le sexe n'est pas cohérente */
+                    if ($genreEleve == "Homme" || $genreEleve == "H" || $genreEleve == "Femme" || $genreEleve == "F") {
 
-                    $updateEleve = new eleveDAO();
+                        $updateEleve = new eleveDAO();
     
-                    $updateEleve -> updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
-                    header ("Location: consulterEleve.php");
+                        $updateEleve -> updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
+                        header ("Location: consulterEleve.php");
+
+                    } else {
+
+                        echo '<p class="erreur">Vous devez choisir entre Homme ou Femme pour le sexe.</p>';
+
+                    }
+
+                    
             
                 }
                 

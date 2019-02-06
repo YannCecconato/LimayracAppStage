@@ -9,6 +9,30 @@ class EntrepriseDAO extends DAO {
 
     }
 
+/** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
+    function find($idEntreprise){
+        $sql = "SELECT * FROM entreprise WHERE IdEntreprise = :idEntreprise";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idEntreprise' => $idEntreprise
+        ));
+    $row = $sth->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $ex) {
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+    }
+    if ($row == NULL) {
+
+        return NULL;
+
+    } else {
+
+        $entreprise = new Entreprise($row);
+        return $entreprise;
+
+    }
+    }
+
 /** function findAll() */ 
     function findAll() {
         $sql = "SELECT * FROM entreprise";

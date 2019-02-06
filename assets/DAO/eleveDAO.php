@@ -74,8 +74,8 @@ class EleveDAO extends DAO {
         return $nb; /** Retourne le nombre de mise à jour */
     }
 
-/** Fonction pour mettre à jour un élève */
-    function updateByIdEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
+/** Fonction pour mettre à jour un élève grâce à son email*/
+    function updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
         $sql = "UPDATE eleve SET ";
         $sql .= "PrenomEleve = :prenomEleve, ";
         $sql .= "NomEleve = :nomEleve, ";
@@ -114,25 +114,30 @@ class EleveDAO extends DAO {
         } catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
         } if (count($row) != 1) {  /** 1 car count($row) vaut 1 lorsque $row est vide */
+
             return true ;  /** Si $row contient des informations alors retourne vrai */
+
         } else {
+
             return false ; /** Si $row est vide alors retourne faux */
+            
         }
     }
     
-/** function delete(), supprime un motif de frais */ 
-    function delete($idEleve) {
-        $sql = "DELETE FROM eleve WHERE IdEleve=:idEleve";
+/** Fonction pour supprimer un élève avec son ID */ 
+    function deleteByIdEleve($idEleve) {
+        $sql = "DELETE FROM eleve WHERE IdEleve = :idEleve";
         try {
-            $sth = $this->pdo->prepare($sql);
-            $sth->execute(array(
-                ":idEleve" => $idEleve
-            ));
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute(array(
+                        ":idEleve" => $idEleve
+                        ));
         } catch (PDOException $e) {
-            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
-        }
-  }
 
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+
+        }
+    }
 }
 
 ?>

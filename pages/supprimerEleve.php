@@ -2,19 +2,10 @@
 
     include "../assets/include/global.inc.php";
     session_start();
-    
-    /** isset : Détermine si "submit" est une variable définie */
-    if (isset($submit)) {
 
-        $idEleve = $_SESSION['idEleve'];
 
-    } else {
+    $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
 
-        $idEleve = isset($_GET['idEleve']) ? $_GET['idEleve'] : "";
-        $_SESSION['idEleve'] = $idEleve;
-
-    }
-    
     $eleveDAO = new eleveDAO();
     $eleve = $eleveDAO -> find($idEleve);
 
@@ -49,9 +40,9 @@
                 <p>Données de l'élève <?php echo "". $eleve -> getNomEleve() ." ". $eleve -> getPrenomEleve() .""; ?>.</p>
                 
                 <!-- Début du formulaire -->
-                <form action="modifierEleve.php" method="post" class="formulaire">
+                <form action="supprimerEleve.php?idEleve=<?php echo $eleve -> getIdEleve(); ?>" method="post" class="formulaire">
 
-                <p><input type="hidden" name="idEleve" value="<?php $eleve -> getIdEleve(); ?>"/></p>
+                <p><input type="hidden" name="idEleve" value="<?php echo $eleve -> getIdEleve(); ?>"/></p>
                 <p> Nom : <strong> <?php echo $eleve -> getNomEleve(); ?> </strong></p>
                 <p> Prénom : <strong> <?php echo $eleve -> getPrenomEleve(); ?> </strong></p>
                 <p> Sexe : <strong> <?php echo $eleve -> getGenreEleve(); ?> </strong></p>
@@ -72,20 +63,15 @@
                 
                 if ($submit) {
 
-                    
-
-                    }
-                    if ($submit) {
-
-                        /** Récupère les variables du formulaire */
-                        $idEleve = $_POST['idEleve'];
+                    /** Récupère les variables du formulaire */
+                    $idEleve = $_POST['idEleve'];
     
-                        $deleteEleve = new eleveDAO();
+                    $deleteEleve = new eleveDAO();
     
-                        $deleteEleve -> delete($idEleve);
-                        header ("Location: consulterEleve.php");
+                    $deleteEleve -> deleteByIdEleve($idEleve);
+                    header ("Location: consulterEleve.php");
                 
-                    }
+                }
                 
                 ?>
 

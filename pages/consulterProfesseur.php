@@ -53,8 +53,6 @@
                     $findByIdQualiteProfesseur = new professeurDAO();
                     $findByIdQualiteProfesseur -> findByIdQualiteProfesseur($idQualiteProfesseur);
 
-                    if ($idQualiteProfesseur == 2) {
-
                         echo "<tr>";
                         echo "<td>". $professeur -> getPrenomProfesseur() ."</td>";
                         echo "<td>". $professeur -> getNomProfesseur() ."</td>";
@@ -63,8 +61,6 @@
                         echo "<td>". $professeur -> getEmailProfesseur() ."</td>";
                         echo '<td><a href="supprimerProfesseur.php?idProfesseur='. $professeur -> getIdProfesseur() .'"> Supprimer </td>';
                         echo "</tr>";
-
-                    }
 
                 }
 
