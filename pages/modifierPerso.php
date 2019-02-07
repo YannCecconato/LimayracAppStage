@@ -7,6 +7,9 @@
     $professeurDAO = new professeurDAO();
     $professeur = $professeurDAO -> findByEmailProfesseur($emailProfesseur);
 
+    $genreDAO = new genreDAO();
+    $genres = $genreDAO -> findAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +38,35 @@
             </div>
             <div id="contenu">
 
+                
                 <p>Vous pouvez, si vous le souhaitez, modifier vos informations dans le formulaire ci-dessous.</p>
                 
                 <!-- Début du formulaire -->
                 <form action="modifierPerso.php" method="post" class="formulaire">
 
+                <p><input type="hidden" name="idProfesseur" values="<?php echo $professeur -> getIdProfesseur(); ?>" /></p>
                 <p>Nom : <input type="text" name="nom" value="<?php echo $professeur -> getNomProfesseur(); ?>" /></p>
                 <p>Prénom : <input type="text" name="prenom" value="<?php echo $professeur -> getPrenomProfesseur(); ?>"/></p>
-                <p>Sexe : <input type="text" name="genre" value="<?php echo $professeur -> getGenreProfesseur(); ?>"/></p>
+                <p>Sexe : <select name="idGenreProfesseur">
+                <?php 
+
+                    foreach ($genres as $genre) {
+
+                        if ($professeur -> getIdGenreProfesseur() == $genre -> getIdGenre()) {
+
+                            echo '<option'.' value="'. $genre -> getCivilite() .'"'.' selected="selected"'.'>'. $genre -> getCivilite() .'</option>';
+
+                        } else {
+
+                            echo '<option'.' value="'. $genre -> getCivilite() .'"'.'>'. $genre -> getCivilite() .'</option>';
+
+                        }
+
+                    }
+                
+                ?></select></p>
                 <p>Téléphone : <input type="text" name="phone" value="<?php echo $professeur -> getTelephoneProfesseur(); ?>"/></p>
-                <p>Adresse mail : <input type="text" name="email" value="<?php echo $professeur -> getEmailProfesseur(); ?>" disabled/></p>
+                <p>Adresse mail : <input type="text" name="email" value="<?php echo $professeur -> getEmailProfesseur(); ?>"/></p>
                 <p>Ancien mot de passe : <input type="password" name="password"/></p>
                 <p>Confirmation ancien mot de passe : <input type="password" name="verifoldpassword"/></p>
                 <p>Nouveau mot de passe : <input type="password" name="newpassword"/></p>
@@ -62,15 +84,16 @@
                 if ($submit) {
 
                     /** Récupère les variables du formulaire */
+                    $idProfesseur = $_POST['idProfesseur'];
                     $nomProfesseur = $_POST['nom'];
                     $prenomProfesseur = $_POST['prenom'];
-                    $genreProfesseur = $_POST['genre'];
                     $telephoneProfesseur = $_POST['phone'];
                     $emailProfesseur = $_SESSION['email'];
                     $password = $_POST['password'];
                     $verifoldpassword = $_POST['verifoldpassword'];
                     $newpassword = $_POST['newpassword'];
                     $verifpassword = $_POST['verifpassword'];
+                    $idGenreProfesseur = $_POST['idGenreProfesseur'];
 
                     $updateprofesseur = new professeurDAO();
 
@@ -81,7 +104,7 @@
                             $newpassword = password_hash($newpassword, PASSWORD_BCRYPT); /** Hachage du mot de passe */
                             $verifpassword = password_hash($verifpassword, PASSWORD_BCRYPT); /** Hachage du mot de passe */
     
-                            $updateprofesseur -> updateByEmailProfesseur($nomProfesseur, $prenomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $verifpassword);
+                            $updateprofesseur -> updateByIdProfesseur($idProfesseur, $nomProfesseur, $prenomProfesseur, $telephoneProfesseur, $emailProfesseur, $verifpassword, $idGenreProfesseur);
                             header ("Location: information.php");
     
                             } else { /** Sinon erreur */

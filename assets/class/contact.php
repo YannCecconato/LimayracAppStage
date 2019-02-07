@@ -6,10 +6,10 @@ class Contact {
     private $idContact = 0;
     private $nomContact = "?";
     private $prenomContact = "?";
-    private $genreContact = "?";
     private $mail = "?";
     private $idEntrepriseContact = "?";
     private $idFonctionContact = "?";
+    private $idGenreContact = 0;
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -79,26 +79,6 @@ class Contact {
     }
 
     /**
-     * Get the value of genreContact
-     */ 
-    public function getGenreContact()
-    {
-        return $this->genreContact;
-    }
-
-    /**
-     * Set the value of genreContact
-     *
-     * @return  self
-     */ 
-    public function setGenreContact($genreContact)
-    {
-        $this->genreContact = $genreContact;
-
-        return $this;
-    }
-
-    /**
      * Get the value of mail
      */ 
     public function getMail()
@@ -158,6 +138,26 @@ class Contact {
         return $this;
     }
 
+    /**
+     * Get the value of idGenreContact
+     */ 
+    public function getIdGenreContact()
+    {
+        return $this->idGenreContact;
+    }
+
+    /**
+     * Set the value of idGenreContact
+     *
+     * @return  self
+     */ 
+    public function setIdGenreContact($idGenreContact)
+    {
+        $this->idGenreContact = $idGenreContact;
+
+        return $this;
+    }
+
     /* function hydrater */
     function hydrater(array $tableau) {
         foreach ($tableau as $cle => $valeur) {
@@ -166,8 +166,7 @@ class Contact {
                     $this->$methode($valeur);
             }
         }
-    } /* function hydrater */
-
+    }
 }
 
 ?>

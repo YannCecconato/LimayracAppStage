@@ -1,15 +1,15 @@
 <?php
 
-class CursusDAO extends DAO {
+class GenreDAO extends DAO {
 
-    /** Constructeur */
+    // Constructeur
     function __construct(){
         parent::__construct();
     }
 
 /** function findAll() */ 
     function findAll() {
-        $sql = "SELECT * FROM cursus";
+        $sql = "SELECT * FROM genre";
         try {
             $sth = $this->pdo->prepare($sql);
             $sth->execute();
@@ -17,15 +17,15 @@ class CursusDAO extends DAO {
         } catch (PDOException $e) {
             throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
         }
-    $cursuss = array();
+    $genres = array();
     foreach ($rows as $row) {
 
-        $cursuss[] = new cursus($row);
+        $genres[] = new genre($row);
 
     }
 
     /** Retourne un tableau d'objets "eleve" */ 
-    return $cursuss;
+    return $genres;
 
     }
 

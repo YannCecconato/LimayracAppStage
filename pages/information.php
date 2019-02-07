@@ -42,7 +42,18 @@
 
                     <p> Nom : <strong> <?php echo $professeur -> getNomProfesseur(); ?> </strong></p>
                     <p> Prénom : <strong> <?php echo $professeur -> getPrenomProfesseur(); ?> </strong></p>
-                    <p> Sexe : <strong> <?php echo $professeur -> getGenreProfesseur(); ?> </strong></p>
+                    <p> Sexe : <strong> 
+                        <?php 
+                            if ($professeur -> getIdGenreProfesseur() == 1) {
+
+                                echo "Femme";
+
+                            } else if ($professeur -> getIdGenreProfesseur() == 2) {
+                        
+                                echo "Homme";
+
+                            }
+                        ?> </strong></p>    
                     <p> Téléphone : <strong> <?php echo $professeur -> getTelephoneProfesseur(); ?> </strong></p>
                     <p> Adresse mail : <strong> <?php echo $_SESSION['email'] ?> </strong></p>
                     <p> Qualité : <strong> <?php if ($_SESSION['idQualiteProfesseur'] == 1) {

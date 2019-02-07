@@ -35,13 +35,14 @@
                 <!-- Début du formulaire d'inscription -->
                 <form action="inscription.php" method="post" class="formulaire">
 
+                    <p><input type="hidden" name="idProfesseur"/></p>
                     <p >Nom : <input type="text" name="nom" required /></p>
                     <p> Prénom : <input type="text" name="prenom" required /></p>
-                    <p> <select name="genre">
-                        <option value="Femme"> Femme </option>
-                        <option value="Homme"> Homme </option>
-                        </select>
-                    </p>        
+                    <p><select name="idGenreProfesseur" required>
+                            <option value=""> Choisissez un genre </option>
+                            <option value="1"> Femme </option>
+                            <option value="2"> Homme </option>
+                    </select></p>        
                     <p> Numéro de téléphone : <input type="text" name="phone" required /></p>
                     <p> Adresse Mail : <input type="text" name="email" required /></p>
                     <p >Mot de passe : <input type="password" name="password" required /></p>
@@ -56,7 +57,7 @@
                 
                     /** Récupère les champs du formulaire */
                     $submit = isset($_POST['submit']) ? $_POST['submit'] : "";
-                    $genre = isset($_POST['genre']) ? $_POST['genre'] : '';
+                    $idGenreProfesseur = isset($_POST['idGenreProfesseur']) ? $_POST['idGenreProfesseur'] : '';
 
                     if ($submit) {
                         
@@ -66,14 +67,15 @@
                         if ($email_valide) { /* Vérifie si c'est un mail du type bla@bla.com */
 
                             /** Récupère les variables du formulaire */
+                            $idProfesseur = $_POST['idProfesseur'];
                             $nomProfesseur = $_POST['nom'];
                             $prenomProfesseur = $_POST['prenom'];
-                            $genreProfesseur = $_POST['genre'];
                             $telephoneProfesseur = $_POST['phone'];
                             $emailProfesseur = $_POST['email'];
                             $password = $_POST['password'];
                             $password_confirm = $_POST['confirm_pass'];
                             $idQualiteProfesseur = $_POST['idQualiteProfesseur'];
+                            $idGenreProfesseur = $_POST['idGenreProfesseur'];
 
                             $professeur = new professeurDAO();
 
@@ -84,16 +86,17 @@
                                     $password = password_hash($password, PASSWORD_BCRYPT); /** Hachage du mot de passe */
 
                                     /** Création d'un professeur */
-                                    $professeur -> inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $password, $idQualiteProfesseur);
+                                    $professeur -> inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $password, $idQualiteProfesseur, $idGenreProfesseur);
 
                                     isset($_SESSION) ? "" : session_start(); /** Démarrage d'une session */
                                     /** Stockage des variables dans une variable de session */
+                                    $_SESSION['idProfesseur'] = $idProfesseur;
                                     $_SESSION['nom'] = $nomProfesseur; 
                                     $_SESSION['prenom'] = $prenomProfesseur;
-                                    $_SESSION['genre'] = $genreProfesseur;
                                     $_SESSION['phone'] = $telephoneProfesseur;
                                     $_SESSION['email'] = $emailProfesseur;
                                     $_SESSION['idQualiteProfesseur'] = $idQualiteProfesseur;
+                                    $_SESSION['idGenreProfesseur'] = $idGenreProfesseur;
                                     header ("Location: ../index.php");
 
                                 } else { /** Si les 2 mots de passe ne sont pas identiques */

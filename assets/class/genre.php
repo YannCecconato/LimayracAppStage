@@ -1,10 +1,10 @@
 <?php
 
-class Option {
+class Genre {
 
     /* Déclaration des variables */
-    private $idOption = 0;
-    private $libelleOption = "?";
+    private $idGenre = 0;
+    private $civilite = "?";
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -12,44 +12,44 @@ class Option {
             $this->hydrater($tableau);
         }
     } /* function construct */
-
+    
 
     /**
-     * Get the value of idOption
+     * Get the value of idGenre
      */ 
-    public function getIdOption()
+    public function getIdGenre()
     {
-        return $this->idOption;
+        return $this->idGenre;
     }
 
     /**
-     * Set the value of idOption
+     * Set the value of idGenre
      *
      * @return  self
      */ 
-    public function setIdOption($idOption)
+    public function setIdGenre($idGenre)
     {
-        $this->idOption = $idOption;
+        $this->idGenre = $idGenre;
 
         return $this;
     }
 
     /**
-     * Get the value of libelleOption
+     * Get the value of civilite
      */ 
-    public function getLibelleOption()
+    public function getCivilite()
     {
-        return $this->libelleOption;
+        return $this->civilite;
     }
 
     /**
-     * Set the value of libelleOption
+     * Set the value of civilite
      *
      * @return  self
      */ 
-    public function setLibelleOption($libelleOption)
+    public function setCivilite($civilite)
     {
-        $this->libelleOption = $libelleOption;
+        $this->civilite = $civilite;
 
         return $this;
     }
@@ -62,7 +62,7 @@ class Option {
                     $this->$methode($valeur);
             }
         }
-    } /* function hydrater */
+    }
 }
 
 ?>

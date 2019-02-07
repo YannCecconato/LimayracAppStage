@@ -9,6 +9,9 @@
     $eleveDAO = new eleveDAO();
     $eleve = $eleveDAO -> find($idEleve);
 
+    $cursusDAO = new cursusDAO();
+    $cursuss = $cursusDAO -> findAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +46,30 @@
                 <p><input type="hidden" name="idEleve" value="<?php echo $eleve -> getIdEleve(); ?>"/></p>
                 <p>Nom : <input type="text" name="nom" value="<?php echo $eleve -> getNomEleve(); ?>" /></p>
                 <p>Prénom : <input type="text" name="prenom" value="<?php echo $eleve -> getPrenomEleve(); ?>"/></p>
-                <p>Sexe : <input type="text" name="genre" value="<?php echo $eleve -> getGenreEleve(); ?>"/></p>
+                <p>Genre : <input type="text" name="genre" value="<?php echo $eleve -> getGenreEleve(); ?>" /></p>
                 <p>Adresse : <input type="text" name="adresse" value="<?php echo $eleve -> getAdresseEleve(); ?>"/></p>
                 <p>Téléphone : <input type="text" name="phone" value="<?php echo $eleve -> getTelephoneEleve(); ?>"/></p>
                 <p>Adresse mail : <input type="text" name="email" value="<?php echo $eleve -> getEmailEleve(); ?>"/></p>
-                <p>Option : <input type="text" name="option" value="<?php echo $eleve -> getOptionEleve(); ?>"/></p>
-                <p>Cursus : <input type="text" name="cursus" value="<?php echo $eleve -> getLibelleCursusEleve(); ?>"/></p>
+                <p>Option : <input type="text" name="option" value="<?php echo $eleve -> getOptionEleve(); ?>" /></p>
+                <p>Cursus : <select> 
+                <?php 
+
+                    foreach ($cursuss as $cursus) {
+
+                        if ($eleve -> getLibelleCursusEleve() == $cursus -> getLibelleCursus()) {
+
+                            echo '<option'.' value="'. $cursus -> getLibelleCursus() .'"'.' selected="selected"'.'>'. $cursus -> getLibelleCursus() .'</option>';
+
+                        } else {
+
+                            echo '<option'.' value="'. $cursus -> getLibelleCursus() .'"'.'>'. $cursus -> getLibelleCursus() .'</option>';
+                            
+                        }
+
+                    }
+
+                ?>
+                </select></p>
                 <p><input type="submit" name="submit" value="Modifier" /></p>
 
                 </form>
@@ -71,23 +92,12 @@
                     $emailEleve = $_POST['email'];
                     $optionEleve = $_POST['option'];
                     $libelleCursusEleve = $_POST['cursus'];
-                    
-                    /** Si la syntaxe pour modifier le sexe n'est pas cohérente */
-                    if ($genreEleve == "Homme" || $genreEleve == "H" || $genreEleve == "Femme" || $genreEleve == "F") {
 
-                        $updateEleve = new eleveDAO();
+                    $updateEleve = new eleveDAO();
     
-                        $updateEleve -> updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
-                        header ("Location: consulterEleve.php");
+                    $updateEleve -> updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
+                    header ("Location: consulterEleve.php");
 
-                    } else {
-
-                        echo '<p class="erreur">Vous devez choisir entre Homme ou Femme pour le sexe.</p>';
-
-                    }
-
-                    
-            
                 }
                 
                 ?>

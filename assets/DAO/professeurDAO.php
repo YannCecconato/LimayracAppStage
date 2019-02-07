@@ -82,19 +82,19 @@ class ProfesseurDAO extends DAO {
     }
 
 /** Fonction pour inscrire un professeur */
-    function inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur) {
-        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, MDP, IdQualiteProfesseur) ";
-        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :genreProfesseur, :telephoneProfesseur, :emailProfesseur, :mdp, :idQualiteProfesseur)";
+    function inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idQualiteProfesseur, $idGenreProfesseur) {
+        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, TelephoneProfesseur, EmailProfesseur, MDP, IdQualiteProfesseur, IdGenreProfesseur) ";
+        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :telephoneProfesseur, :emailProfesseur, :mdp, :idQualiteProfesseur, :idGenreProfesseur)";
             try {
                 $sth = $this->pdo->prepare($sql);
                 $sth->execute(array(
                     ':prenomProfesseur' => $prenomProfesseur,
                     ':nomProfesseur' => $nomProfesseur,
-                    ':genreProfesseur' => $genreProfesseur,
                     ':telephoneProfesseur' => $telephoneProfesseur,
                     ':emailProfesseur' => $emailProfesseur,
                     ':mdp' => $mdp,
-                    ':idQualiteProfesseur' => $idQualiteProfesseur
+                    ':idQualiteProfesseur' => $idQualiteProfesseur,
+                    ':idGenreProfesseur' => $idGenreProfesseur
                 ));
             } catch (PDOException $ex) {
 
@@ -124,23 +124,24 @@ class ProfesseurDAO extends DAO {
             }    
     }    
 
-/** Fonction pour mettre à jour un professeur */
-    function updateByEmailProfesseur($nomProfesseur, $prenomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp) {
+/** Fonction pour mettre à jour un professeur par son ID */
+    function updateByIdProfesseur($idProfesseur, $nomProfesseur, $prenomProfesseur, $telephoneProfesseur, $emailProfesseur, $mdp, $idGenreProfesseur) {
         $sql = "UPDATE professeur SET ";
         $sql .= "NomProfesseur = :nomProfesseur, ";
         $sql .= "PrenomProfesseur = :prenomProfesseur, ";
-        $sql .= "GenreProfesseur = :genreProfesseur, ";
         $sql .= "TelephoneProfesseur = :telephoneProfesseur, ";
         $sql .= "EmailProfesseur = :emailProfesseur, ";
-        $sql .= "MDP = :mdp ";
-        $sql .= "WHERE EmailProfesseur = :emailProfesseur";
+        $sql .= "MDP = :mdp, ";
+        $sql .= "IdGenreProfesseur = :idGenreProfesseur ";
+        $sql .= "WHERE IdProfesseur = :idProfesseur";
         $params = array(
             ":nomProfesseur" => $nomProfesseur,
             ":prenomProfesseur" => $prenomProfesseur,
-            ":genreProfesseur" => $genreProfesseur,
             ":telephoneProfesseur" => $telephoneProfesseur,
             ":emailProfesseur" => $emailProfesseur,
-            ":mdp" => $mdp
+            ":mdp" => $mdp,
+            ":idGenreProfesseur" => $idGenreProfesseur,
+            ":idProfesseur" => $idProfesseur
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();

@@ -73,6 +73,32 @@ class EntrepriseDAO extends DAO {
         return $nb; /** Retourne le nombre de mise à jour */
     }
 
+/** Fonction pour mettre à jour une entreprise grâce à son ID*/
+    function updateByIdEntreprise($idEntreprise, $denomination, $adresseEntreprise, $cp, $ville, $telephoneEntreprise, $fax, $nbStage) {
+        $sql = "UPDATE eleve SET ";
+        $sql .= "Denomination = :denomination, ";
+        $sql .= "AdresseEntreprise = :adresseEntreprise, ";
+        $sql .= "CP = :cp, ";
+        $sql .= "Ville = :ville, ";
+        $sql .= "TelephoneEntreprise = :telephoneEntreprise, ";
+        $sql .= "Fax = :fax ";
+        $sql .= "NombreStage = :nbStage";
+        $sql .= "WHERE IdEntreprise = :idEntreprise";
+        $params = array(
+            ":denomination" => $denomination,
+            ":adresseEntreprise" => $adresseEntreprise,
+            ":cp" => $cp,
+            ":ville" => $ville,
+            ":telephoneEntreprise" => $telephoneEntreprise,
+            ":fax" => $libelleCursusEntrfaxeprise,
+            ":nbStage" => $nbStage,
+            ":idEntreprise" => $idEntreprise
+        );
+        $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
+        $nb = $sth->rowcount();
+        return $nb;
+}
+
 }
 
 

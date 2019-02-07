@@ -34,12 +34,30 @@ CREATE TABLE `eleve` (
     `IdEleve`               int(11) NOT NULL,
     `PrenomEleve`           varchar(20) DEFAULT NULL,
     `NomEleve`              varchar(20) DEFAULT NULL,
-    `GenreEleve`            varchar(1) DEFAULT NULL,
     `AdresseEleve`          varchar(100) DEFAULT NULL,
     `TelephoneEleve`        varchar(15) DEFAULT NULL,
     `EmailEleve`            varchar(50) DEFAULT NULL,
-    `OptionEleve`           varchar(15) DEFAULT NULL,
-    `LibelleCursusEleve`    varchar(20) DEFAULT NULL
+    `LibelleCursusEleve`    varchar(20) DEFAULT NULL,
+    `IdOptionEleve`         int(11) DEFAULT NULL,
+    `IdGenreEleve`          int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `genre`
+--
+
+CREATE TABLE `genre` (
+    `IdGenre`       int(11) NOT NULL,
+    `Civilite`      varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `option`
+--
+
+CREATE TABLE `option` (
+    `IdOption`          int(11) NOT NULL,
+    `LibelleOption`     varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -50,11 +68,11 @@ CREATE TABLE `professeur` (
     `IdProfesseur`          int(11) NOT NULL,
     `PrenomProfesseur`      varchar(20) DEFAULT NULL,
     `NomProfesseur`         varchar(20) DEFAULT NULL,
-    `GenreProfesseur`       varchar(1) DEFAULT NULL,
     `TelephoneProfesseur`   varchar(15) DEFAULT NULL,
     `EmailProfesseur`       varchar(50) DEFAULT NULL,
     `MDP`                   varchar(255) NOT NULL,
-    `IdQualiteProfesseur`   int(11) DEFAULT NULL
+    `IdQualiteProfesseur`   int(11) DEFAULT NULL,
+    `IdGenreProfesseur`     int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -239,11 +257,11 @@ CREATE TABLE `contact` (
     `IdContact`             int(11) NOT NULL,
     `NomContact`            varchar(20) DEFAULT NULL,
     `PrenomContact`         varchar(20) DEFAULT NULL,
-    `GenreContact`          varchar(1) DEFAULT NULL,
     `EmailContact`          varchar(40) DEFAULT NULL,
     `TelephoneContact`      varchar(15) DEFAULT NULL,
     `IdEntrepriseContact`   int(11) DEFAULT NULL,
-    `IdFonctionContact`     int(11) DEFAULT NULL
+    `IdFonctionContact`     int(11) DEFAULT NULL,
+    `IdGenreContact`        int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -266,7 +284,23 @@ CREATE TABLE `fonction` (
 
 ALTER TABLE `eleve`
     ADD PRIMARY KEY (`IdEleve`),
-    ADD KEY `FK_Eleve_LibelleCursus` (`LibelleCursusEleve`);
+    ADD KEY `FK_Eleve_LibelleCursus` (`LibelleCursusEleve`),
+    ADD KEY `FK_Eleve_IdOption` (`IdOptionEleve`),
+    ADD KEY `FK_Eleve_IdGenre` (`IdGenreEleve`);
+
+--
+-- Index pour la table `option`
+--
+
+ALTER TABLE `option`
+    ADD PRIMARY KEY (`IdOption`);
+
+--
+-- Index pour la table `genre`
+--
+
+ALTER TABLE `genre`
+    ADD PRIMARY KEY (`IdGenre`);
 
 --
 -- Index pour la table `professeur`
@@ -274,7 +308,8 @@ ALTER TABLE `eleve`
 
 ALTER TABLE `professeur`
     ADD PRIMARY KEY (`IdProfesseur`),
-    ADD KEY `FK_Professeur_IdQualite` (`IdQualiteProfesseur`);
+    ADD KEY `FK_Professeur_IdQualite` (`IdQualiteProfesseur`),
+    ADD KEY `FK_Professeur_IdGenre` (`IdGenreProfesseur`);
 
 --
 -- Index pour la table `qualité`
@@ -415,7 +450,8 @@ ALTER TABLE `pme`
 ALTER TABLE `contact`
     ADD PRIMARY KEY (`IdContact`),
     ADD KEY `FK_Contact_IdEntreprise` (`IdEntrepriseContact`),
-    ADD KEY `FK_Contact_IdFonction` (`IdFonctionContact`);
+    ADD KEY `FK_Contact_IdFonction` (`IdFonctionContact`),
+    ADD KEY `FK_Contact_IdGenre` (`IdGenreContact`);
 
 --
 -- Index pour la table `fonction`
@@ -434,6 +470,20 @@ ALTER TABLE `fonction`
 
 ALTER TABLE `eleve`
     MODIFY `IdEleve` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `option`
+--
+
+ALTER TABLE `option`
+    MODIFY `IdOption` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `genre`
+--
+
+ALTER TABLE `genre`
+    MODIFY `IdGenre` int(11) NOT NULL AUTo_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `professeur`
@@ -521,8 +571,10 @@ ALTER TABLE `fonction`
 --
 
 ALTER TABLE `eleve`
-    ADD CONSTRAINT `FK_Eleve_LibelleCursus` FOREIGN KEY (`LibelleCursusEleve`) REFERENCES `cursus` (`LibelleCursus`);
-
+    ADD CONSTRAINT `FK_Eleve_LibelleCursus` FOREIGN KEY (`LibelleCursusEleve`) REFERENCES `cursus` (`LibelleCursus`),
+    ADD CONSTRAINT `FK_Eleve_IdOption` FOREIGN KEY (`IdOptionEleve`) REFERENCES `option` (`IdOption`),
+    ADD CONSTRAINT `FK_Eleve_IdGenre` FOREIGN KEY (`IdGenreEleve`) REFERENCES `genre` (`IdGenre`);
+    
 --
 -- Contraintes pour la table `promotion`
 --
@@ -535,7 +587,8 @@ ALTER TABLE `promotion`
 --
 
 ALTER TABLE `professeur`
-    ADD CONSTRAINT `FK_Professeur_IdQualite` FOREIGN KEY (`IdQualiteProfesseur`) REFERENCES `qualite` (`IdQualite`);
+    ADD CONSTRAINT `FK_Professeur_IdQualite` FOREIGN KEY (`IdQualiteProfesseur`) REFERENCES `qualite` (`IdQualite`),
+    ADD CONSTRAINT `FK_Professeur_IdGenre` FOREIGN KEY (`IdGenreProfesseur`) REFERENCES `genre` (`IdGenre`);
 
 --
 -- Contraintes pour la table `sujet`
@@ -613,7 +666,8 @@ ALTER TABLE `pme`
 
 ALTER TABLE `contact`
     ADD CONSTRAINT `FK_Contact_IdEntreprise` FOREIGN KEY (`IdEntrepriseContact`) REFERENCES `entreprise` (`IdEntreprise`),
-    ADD CONSTRAINT `FK_Contact_IdFonction` FOREIGN KEY (`IdFonctionContact`) REFERENCES `fonction` (`IdFonction`);
+    ADD CONSTRAINT `FK_Contact_IdFonction` FOREIGN KEY (`IdFonctionContact`) REFERENCES `fonction` (`IdFonction`),
+    ADD CONSTRAINT `FK_Contact_IdGenre` FOREIGN KEY (`IdGenreContact`) REFERENCES `genre` (`IdGenre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

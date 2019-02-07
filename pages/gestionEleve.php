@@ -37,7 +37,6 @@ session_start();
             <div id="contenu">
 
                 <p>Ici, vous pouvez gérer vos élèves en ajoutant, consultant, supprimant ou modifiant leurs données.</p>
-                
 
             </div> 
             <div id="piedpage">

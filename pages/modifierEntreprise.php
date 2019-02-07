@@ -47,6 +47,7 @@
                 <p>Ville : <input type="text" name="ville" value="<?php echo $entreprise -> getVille(); ?>"/></p>
                 <p>Téléphone : <input type="text" name="phone" value="<?php echo $entreprise -> getTelephoneEntreprise(); ?>"/></p>
                 <p>Fax : <input type="text" name="fax" value="<?php echo $entreprise -> getFax(); ?>"/></p>
+                <p>Nombre de stages : <input type="text" name="nbStage" value="<?php echo $entreprise -> getNombreStage(); ?>"
                 <p><input type="submit" name="submit" value="Modifier" /></p>
 
                 </form>
@@ -67,10 +68,11 @@
                     $ville = $_POST['ville'];
                     $phone = $_POST['phone'];
                     $fax = $_POST['fax'];
+                    $nbStage = $_POST['nbStage'];
 
                     $updateEntreprise = new entrepriseDAO();
     
-                    $updateEntreprise -> updateByEmailEntreprise($prenomEntreprise, $nomEntreprise, $genreEntreprise, $adresseEntreprise, $telephoneEntreprise, $emailEntreprise, $optionEntreprise, $libelleCursusEntreprise);
+                    $updateEntreprise -> updateByIdEntreprise($idEntreprise, $denomination, $adresseEntreprise, $cp, $ville, $telephoneEntreprise, $fax, $nbStage);
                     header ("Location: consulterEntreprise.php");
 
                     }

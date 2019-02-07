@@ -6,9 +6,9 @@ class Professeur {
     private $idProfesseur = 0;
     private $prenomProfesseur = "?";
     private $nomProfesseur = "?";
-    private $genreProfesseur = "?";
     private $telephoneProfesseur = "?";
     private $emailProfesseur = "?";
+    private $idGenreProfesseur = 0;
 
     /** function construct */
     function __construct(array $tableau = null) {
@@ -78,26 +78,6 @@ class Professeur {
     }
 
     /**
-     * Get the value of genreProfesseur
-     */ 
-    public function getGenreProfesseur()
-    {
-        return $this->genreProfesseur;
-    }
-
-    /**
-     * Set the value of genreProfesseur
-     *
-     * @return  self
-     */ 
-    public function setGenreProfesseur($genreProfesseur)
-    {
-        $this->genreProfesseur = $genreProfesseur;
-
-        return $this;
-    }
-
-    /**
      * Get the value of telephoneProfesseur
      */ 
     public function getTelephoneProfesseur()
@@ -137,6 +117,26 @@ class Professeur {
         return $this;
     }
 
+    /**
+     * Get the value of idGenreProfesseur
+     */ 
+    public function getIdGenreProfesseur()
+    {
+        return $this->idGenreProfesseur;
+    }
+
+    /**
+     * Set the value of idGenreProfesseur
+     *
+     * @return  self
+     */ 
+    public function setIdGenreProfesseur($idGenreProfesseur)
+    {
+        $this->idGenreProfesseur = $idGenreProfesseur;
+
+        return $this;
+    }
+
     /* function hydrater */
     function hydrater(array $tableau) {
         foreach ($tableau as $cle => $valeur) {
@@ -145,8 +145,7 @@ class Professeur {
                     $this->$methode($valeur);
             }
         }
-    } /* function hydrater */
-
+    }
 }
 
 ?>

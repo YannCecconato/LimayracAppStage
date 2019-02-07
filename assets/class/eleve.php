@@ -6,12 +6,12 @@ class Eleve {
     private $idEleve = 0;
     private $prenomEleve = "?";
     private $nomEleve = "?";
-    private $genreEleve = "?";
     private $adresseEleve = "?";
     private $telephoneEleve = "?";
     private $emailEleve = "?";
-    private $optionEleve = "?";
     private $libelleCursusEleve = "?";
+    private $idOptionEleve = 0;
+    private $idGenreEleve = 0;
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -81,26 +81,6 @@ class Eleve {
     }
 
     /**
-     * Get the value of genreEleve
-     */ 
-    public function getGenreEleve()
-    {
-        return $this->genreEleve;
-    }
-
-    /**
-     * Set the value of genreEleve
-     *
-     * @return  self
-     */ 
-    public function setGenreEleve($genreEleve)
-    {
-        $this->genreEleve = $genreEleve;
-
-        return $this;
-    }
-
-    /**
      * Get the value of adresseEleve
      */ 
     public function getAdresseEleve()
@@ -136,26 +116,6 @@ class Eleve {
     public function setTelephoneEleve($telephoneEleve)
     {
         $this->telephoneEleve = $telephoneEleve;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idOptionEleve
-     */ 
-    public function getIdOptionEleve()
-    {
-        return $this->idOptionEleve;
-    }
-
-    /**
-     * Set the value of idOptionEleve
-     *
-     * @return  self
-     */ 
-    public function setIdOptionEleve($idOptionEleve)
-    {
-        $this->idOptionEleve = $idOptionEleve;
 
         return $this;
     }
@@ -220,6 +180,46 @@ class Eleve {
         return $this;
     }
 
+    /**
+     * Get the value of idOptionEleve
+     */ 
+    public function getIdOptionEleve()
+    {
+        return $this->idOptionEleve;
+    }
+
+    /**
+     * Set the value of idOptionEleve
+     *
+     * @return  self
+     */ 
+    public function setIdOptionEleve($idOptionEleve)
+    {
+        $this->idOptionEleve = $idOptionEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idGenreEleve
+     */ 
+    public function getIdGenreEleve()
+    {
+        return $this->idGenreEleve;
+    }
+
+    /**
+     * Set the value of idGenreEleve
+     *
+     * @return  self
+     */ 
+    public function setIdGenreEleve($idGenreEleve)
+    {
+        $this->idGenreEleve = $idGenreEleve;
+
+        return $this;
+    }
+
     /** function hydrater */
     function hydrater(array $tableau) {
         foreach ($tableau as $cle => $valeur) {
@@ -228,8 +228,7 @@ class Eleve {
                     $this->$methode($valeur);
             }
         }
-    } /** function hydrater */
-
+    }
 }
 
 ?>
