@@ -10,7 +10,7 @@
                             echo '<li class="right"><a href="inscription.php" class="a_menu"> Inscription </a></li>';
                             echo '<li class="right"><a href="connexion.php" class="a_menu"> Connexion </a></li>';
 
-                        } else if ($_SESSION['idQualiteProfesseur'] == 1) { /** Si le professeur est un responsable de section */
+                        } else if ($_SESSION['libelleQualiteProfesseur'] == "Responsable Section") { /** Si le professeur est un responsable de section */
 
                             echo '<li class="right"><a href="deconnexion.php" class="a_menu"> Se déconnecter </a></li>';
                             echo '<li class="right"><a href="perso.php" class="a_menu"> Espace personnel </a></li>';

@@ -47,7 +47,27 @@ class ProfesseurDAO extends DAO {
     }
     /** Retourne un tableau d'objets "professeur" */ 
     return $professeur;
-    } 
+    }
+    
+    /** Fonction findAll() */
+    function findAllByLibelleQualite($libelleQualiteProfesseur) {
+        $sql = "SELECT * FROM professeur WHERE LibelleQualiteProfesseur = :libelleQualiteProfesseur";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':libelleQualiteProfesseur' => $libelleQualiteProfesseur
+            ));
+            $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+    $professeurs = array();
+    foreach ($rows as $row) {
+        $professeurs[] = new professeur($row);
+    }
+    /** Retourne un tableau d'objets "professeur" */ 
+    return $professeurs;
+    }
 
 /** Fonction pour trouver les informations d'un professeur grâce à son adresse mail */
     function findByEmailProfesseur($emailProfesseur) {
@@ -66,16 +86,18 @@ class ProfesseurDAO extends DAO {
     }
 
 /** Fonction pour trouver les informations d'un professeur grâce à son adresse mail */
-    function findByIdQualiteProfesseur($idQualiteProfesseur) {
+    function findByLibelleQualiteProfesseur($libelleQualiteProfesseur) {
         $sql = "SELECT * FROM professeur WHERE IdQualiteProfesseur = :idQualiteProfesseur";
         try {
             $sth = $this->pdo->prepare($sql);
             $sth->execute(array(
-                ':idQualiteProfesseur' => $idQualiteProfesseur
+                ':libelleQualiteProfesseur' => $libelleQualiteProfesseur
             ));
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
+
             throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+
         }
         $professeur = new professeur($row);
         return $professeur; /** Retourne l'objet métier */
@@ -104,18 +126,18 @@ class ProfesseurDAO extends DAO {
     }
 
 /** Fonction pour inscrire un professeur par le Responsable de Section */
-    function inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $idQualiteProfesseur) {
-        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, GenreProfesseur, TelephoneProfesseur, EmailProfesseur, IdQualiteProfesseur) ";
-        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :genreProfesseur, :telephoneProfesseur, :emailProfesseur, :idQualiteProfesseur)";
+    function inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $libelleQualiteProfesseur, $libelleGenreProfesseur) {
+        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, TelephoneProfesseur, EmailProfesseur, LibelleQualiteProfesseur, LibelleGenreProfesseur) ";
+        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :telephoneProfesseur, :emailProfesseur, :libelleQualiteProfesseur, :libelleGenreProfesseur)";
             try {
                 $sth = $this->pdo->prepare($sql);
                 $sth->execute(array(
                     ':prenomProfesseur' => $prenomProfesseur,
                     ':nomProfesseur' => $nomProfesseur,
-                    ':genreProfesseur' => $genreProfesseur,
                     ':telephoneProfesseur' => $telephoneProfesseur,
                     ':emailProfesseur' => $emailProfesseur,
-                    ':idQualiteProfesseur' => $idQualiteProfesseur
+                    ':libelleQualiteProfesseur' => $libelleQualiteProfesseur,
+                    ':libelleGenreProfesseur' => $libelleGenreProfesseur
                 ));
             } catch (PDOException $ex) {
 
@@ -125,20 +147,20 @@ class ProfesseurDAO extends DAO {
     }    
 
 /** Fonction pour mettre à jour un professeur par son Email */
-    function updateByEmailProfesseur($nomProfesseur, $prenomProfesseur, $telephoneProfesseur, $emailProfesseur, $idGenreProfesseur) {
+    function updateByEmailProfesseur($nomProfesseur, $prenomProfesseur, $telephoneProfesseur, $emailProfesseur, $libelleGenreProfesseur) {
         $sql = "UPDATE professeur SET ";
         $sql .= "NomProfesseur = :nomProfesseur, ";
         $sql .= "PrenomProfesseur = :prenomProfesseur, ";
         $sql .= "TelephoneProfesseur = :telephoneProfesseur, ";
         $sql .= "EmailProfesseur = :emailProfesseur, ";
-        $sql .= "IdGenreProfesseur = :idGenreProfesseur ";
+        $sql .= "LibelleGenreProfesseur = :libelleGenreProfesseur ";
         $sql .= "WHERE EmailProfesseur = :emailProfesseur";
         $params = array(
             ":nomProfesseur" => $nomProfesseur,
             ":prenomProfesseur" => $prenomProfesseur,
             ":telephoneProfesseur" => $telephoneProfesseur,
             ":emailProfesseur" => $emailProfesseur,
-            ":idGenreProfesseur" => $idGenreProfesseur
+            ":libelleGenreProfesseur" => $libelleGenreProfesseur
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();

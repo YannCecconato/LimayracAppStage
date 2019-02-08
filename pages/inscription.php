@@ -74,7 +74,7 @@
                             $emailProfesseur = $_POST['email'];
                             $password = $_POST['password'];
                             $password_confirm = $_POST['confirm_pass'];
-                            $idQualiteProfesseur = $_POST['idQualiteProfesseur'];
+                            $libelleQualiteProfesseur = $_POST['libelleQualiteProfesseur'];
                             $libelleGenreProfesseur = $_POST['libelleGenreProfesseur'];
 
                             $professeur = new professeurDAO();

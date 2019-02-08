@@ -10,8 +10,8 @@ class Eleve {
     private $telephoneEleve = "?";
     private $emailEleve = "?";
     private $libelleCursusEleve = "?";
-    private $idOptionEleve = 0;
-    private $idGenreEleve = 0;
+    private $libelleOptionEleve = "?";
+    private $libelleGenreEleve = "?";
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -141,26 +141,6 @@ class Eleve {
     }
 
     /**
-     * Get the value of optionEleve
-     */ 
-    public function getOptionEleve()
-    {
-        return $this->optionEleve;
-    }
-
-    /**
-     * Set the value of optionEleve
-     *
-     * @return  self
-     */ 
-    public function setOptionEleve($optionEleve)
-    {
-        $this->optionEleve = $optionEleve;
-
-        return $this;
-    }
-
-    /**
      * Get the value of libelleCursusEleve
      */ 
     public function getLibelleCursusEleve()
@@ -181,41 +161,41 @@ class Eleve {
     }
 
     /**
-     * Get the value of idOptionEleve
+     * Get the value of libelleOptionEleve
      */ 
-    public function getIdOptionEleve()
+    public function getLibelleOptionEleve()
     {
-        return $this->idOptionEleve;
+        return $this->libelleOptionEleve;
     }
 
     /**
-     * Set the value of idOptionEleve
+     * Set the value of libelleOptionEleve
      *
      * @return  self
      */ 
-    public function setIdOptionEleve($idOptionEleve)
+    public function setLibelleOptionEleve($libelleOptionEleve)
     {
-        $this->idOptionEleve = $idOptionEleve;
+        $this->libelleOptionEleve = $libelleOptionEleve;
 
         return $this;
     }
 
     /**
-     * Get the value of idGenreEleve
+     * Get the value of libelleGenreEleve
      */ 
-    public function getIdGenreEleve()
+    public function getLibelleGenreEleve()
     {
-        return $this->idGenreEleve;
+        return $this->libelleGenreEleve;
     }
 
     /**
-     * Set the value of idGenreEleve
+     * Set the value of libelleGenreEleve
      *
      * @return  self
      */ 
-    public function setIdGenreEleve($idGenreEleve)
+    public function setLibelleGenreEleve($libelleGenreEleve)
     {
-        $this->idGenreEleve = $idGenreEleve;
+        $this->libelleGenreEleve = $libelleGenreEleve;
 
         return $this;
     }

@@ -3,10 +3,9 @@
     include "../assets/include/global.inc.php";
     session_start();
 
+    $libelleQualiteProfesseur = "Professeur référent";
     $professeurDAO = new professeurDAO();
-    $professeurs = $professeurDAO->findAll();
-
-    $idQualiteProfesseur = $_SESSION['idQualiteProfesseur'];
+    $professeurs = $professeurDAO->findAllByLibelleQualite($libelleQualiteProfesseur);
 
 ?>
 
@@ -50,13 +49,10 @@
 
                 foreach ($professeurs as $professeur) {
 
-                    $findByIdQualiteProfesseur = new professeurDAO();
-                    $findByIdQualiteProfesseur -> findByIdQualiteProfesseur($idQualiteProfesseur);
-
                         echo "<tr>";
                         echo "<td>". $professeur -> getPrenomProfesseur() ."</td>";
                         echo "<td>". $professeur -> getNomProfesseur() ."</td>";
-                        echo "<td>". $professeur -> getGenreProfesseur() ."</td>";
+                        echo "<td>". $professeur -> getLibelleGenreProfesseur() ."</td>";
                         echo "<td>". $professeur -> getTelephoneProfesseur() ."</td>";
                         echo "<td>". $professeur -> getEmailProfesseur() ."</td>";
                         echo '<td><a href="supprimerProfesseur.php?idProfesseur='. $professeur -> getIdProfesseur() .'"> Supprimer </td>';

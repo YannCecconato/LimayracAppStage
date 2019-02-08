@@ -55,11 +55,11 @@
                     echo "<tr>";
                     echo "<td>". $eleve -> getPrenomEleve() ."</td>";
                     echo "<td>". $eleve -> getNomEleve() ."</td>";
-                    echo "<td>". $eleve -> getGenreEleve() ."</td>";
+                    echo "<td>". $eleve -> getLibelleGenreEleve() ."</td>";
                     echo "<td>". $eleve -> getAdresseEleve() ."</td>";
                     echo "<td>". $eleve -> getTelephoneEleve() ."</td>";
                     echo "<td>". $eleve -> getEmailEleve() ."</td>";
-                    echo "<td>". $eleve -> getOptionEleve() ."</td>";
+                    echo "<td>". $eleve -> getLibelleOptionEleve() ."</td>";
                     echo "<td>". $eleve -> getLibelleCursusEleve() ."</td>";
                     echo '<td><a href="modifierEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Modifier </td>';
                     echo '<td><a href="supprimerEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Supprimer </td>';

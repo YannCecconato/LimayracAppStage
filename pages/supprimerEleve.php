@@ -45,11 +45,11 @@
                 <p><input type="hidden" name="idEleve" value="<?php echo $eleve -> getIdEleve(); ?>"/></p>
                 <p> Nom : <strong> <?php echo $eleve -> getNomEleve(); ?> </strong></p>
                 <p> Prénom : <strong> <?php echo $eleve -> getPrenomEleve(); ?> </strong></p>
-                <p> Sexe : <strong> <?php echo $eleve -> getGenreEleve(); ?> </strong></p>
+                <p> Sexe : <strong> <?php echo $eleve -> getLibelleGenreEleve(); ?> </strong></p>
                 <p> Adresse : <strong> <?php echo $eleve -> getAdresseEleve(); ?> </strong></p>
                 <p> Téléphone : <strong> <?php echo $eleve -> getTelephoneEleve(); ?> </strong></p>
                 <p> Mail : <strong> <?php echo $eleve -> getEmailEleve(); ?> </strong></p>
-                <p> Option : <strong> <?php echo $eleve -> getOptionEleve(); ?> </strong></p>
+                <p> Option : <strong> <?php echo $eleve -> getLibelleOptionEleve(); ?> </strong></p>
                 <p> Cursus : <strong> <?php echo $eleve -> getLibelleCursusEleve(); ?> </strong></p>
                 <p><input type="submit" name="submit" value="Supprimer" /></p>
 

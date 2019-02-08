@@ -36,6 +36,7 @@
                 
                     <p>Adresse Mail : <input type="text" name="email" required /></p>
                     <p>Mot de passe : <input type="password" name="password" required /></p>
+                    <p><input type="hidden" name="libelleQualiteProfesseur" value="Responsable Section"/></p>
                     <p><input type="submit" name="submit" value="Se connecter" /></p>
 
                 </form>
@@ -52,6 +53,7 @@
                     /** Récupération des valeurs du formulaire */
                     $emailProfesseur = isset($_POST['email']) ? $_POST['email'] : " ";
                     $password = isset($_POST['password']) ? $_POST['password'] : " ";
+                    $libelleQualiteProfesseur = isset($_POST['libelleQualiteProfesseur']) ? $_POST['libelleQualiteProfesseur'] : " ";
                     $submit = isset($_POST['submit']);
 
                     if ($submit == 1) {
@@ -64,7 +66,7 @@
                             /** Stockage des variables dans une variable de session */
                             $_SESSION['email'] = $emailProfesseur;
                             $_SESSION['password'] = $password;
-                            $_SESSION['idQualiteProfesseur'] = 1;
+                            $_SESSION['libelleQualiteProfesseur'] = $libelleQualiteProfesseur;
                             header ("Location: ../index.php"); /** Redirection vers la page d'acceuil */
 
                         } else { /** Les informations ne correspondent à aucun utilisateur */

@@ -38,14 +38,14 @@
 
                     <p>Prénom : <input type="text" name="prenom" required /></p>
                     <p>Nom : <input type="text" name="nom" required /></p>
-                    <p> <select name="genre">
+                    <p>Sexe : <select name="libelleGenreProfesseur">
                             <option value="Femme"> Femme </option>
                             <option value="Homme"> Homme </option>
                         </select>
                     </p>
                     <p>Numéro de téléphone : <input type="text" name="phone"/></p>
                     <p>Adresse mail : <input type="text" name="email" required /></p>
-                    <p><input type="hidden" name="idQualiteProfesseur" value="2"/></p>    
+                    <p><input type="hidden" name="libelleQualiteProfesseur" value="Professeur référent"/></p>    
                     <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"/></p>
 
                 </form>
@@ -68,18 +68,18 @@
                             /** Récupère les variables du formulaire */
                             $prenomProfesseur = $_POST['prenom'];
                             $nomProfesseur = $_POST['nom'];
-                            $genreProfesseur = $_POST['genre'];
                             $telephoneProfesseur = $_POST['phone'];
                             $emailProfesseur = $_POST['email'];
-                            $idQualiteProfesseur = $_POST['idQualiteProfesseur'];
+                            $libelleQualiteProfesseur = $_POST['libelleQualiteProfesseur'];
+                            $libelleGenreProfesseur = $_POST['libelleGenreProfesseur'];
 
                             $newprofesseur = new ProfesseurDAO();
 
                             if ($newprofesseur->is_mail_exist($emailProfesseur) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un professeur */
-                                    $newprofesseur -> inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $genreProfesseur, $telephoneProfesseur, $emailProfesseur, $idQualiteProfesseur);
-                                    header ("Location: gestionProfesseur.php");
+                                    $newprofesseur -> inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $libelleQualiteProfesseur, $libelleGenreProfesseur);
+                                    header ("Location: consulterProfesseur.php");
 
                             } else { /** L'email saisit est déjà utilisé */
 

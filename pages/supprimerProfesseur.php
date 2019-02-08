@@ -3,9 +3,7 @@
     include "../assets/include/global.inc.php";
     session_start();
 
-
     $idProfesseur = isset($_GET['idProfesseur']) ? $_GET['idProfesseur'] : "";
-
     $professeurDAO = new professeurDAO();
     $professeur = $professeurDAO -> find($idProfesseur);
 
@@ -45,7 +43,7 @@
                 <p><input type="hidden" name="idProfesseur" value="<?php echo $professeur -> getIdProfesseur(); ?>"/></p>
                 <p> Nom : <strong> <?php echo $professeur -> getNomProfesseur(); ?> </strong></p>
                 <p> Prénom : <strong> <?php echo $professeur -> getPrenomProfesseur(); ?> </strong></p>
-                <p> Sexe : <strong> <?php echo $professeur -> getGenreProfesseur(); ?> </strong></p>
+                <p> Sexe : <strong> <?php echo $professeur -> getLibelleGenreProfesseur(); ?> </strong></p>
                 <p> Téléphone : <strong> <?php echo $professeur -> getTelephoneProfesseur(); ?> </strong></p>
                 <p> Mail : <strong> <?php echo $professeur -> getEmailProfesseur(); ?> </strong></p>
                 <p><input type="submit" name="submit" value="Supprimer" /></p>

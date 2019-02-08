@@ -36,10 +36,10 @@
 
                     <p>Prénom : <input type="text" name="prenom" required /></p>
                     <p>Nom : <input type="text" name="nom" required /></p>
-                    <p> <select name="idGenreEleve">
+                    <p> <select name="libelleGenreEleve">
                             <option value=""> Choissisez un sexe </option>
-                            <option value="1"> Femme </option>
-                            <option value="2"> Homme </option>
+                            <option value="Femme"> Femme </option>
+                            <option value="Homme"> Homme </option>
                         </select>
                     </p>
                     <p>Adresse : <input type="text" name="adresse" /></p>    
@@ -55,8 +55,8 @@
                     <p> 
                         <select name="idOptionEleve">
                             <option value=""> Choisissez une option </option>
-                            <option value="1"> Solutions Logicielles et Applications Métiers </option>    
-                            <option value="2"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
+                            <option value="SLAM"> Solutions Logicielles et Applications Métiers </option>    
+                            <option value="SISR"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
                         </select>
                     </p>    
                     <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"></p>
@@ -86,14 +86,14 @@
                             $emailEleve = $_POST['email'];
                             $idOptionEleve = $_POST['idOptionEleve'];
                             $libelleCursusEleve = $_POST['libelleCursusEleve'];
-                            $idGenreEleve = $_POST['idGenreEleve'];
+                            $libelleGenreEleve = $_POST['libelleGenreEleve'];
 
                             $eleve = new EleveDAO();
 
                             if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un élève */
-                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $idOptionEleve, $libelleCursusEleve, $idGenreEleve);
+                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $idOptionEleve, $libelleCursusEleve, $libelleGenreEleve);
                                     header ("Location: consulterEleve.php");
 
                             } else { /** L'email saisit est déjà utilisé */

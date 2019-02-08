@@ -45,17 +45,7 @@
                     <p> Sexe : <strong> <?php echo $professeur -> getLibelleGenreProfesseur(); ?> </strong></p>    
                     <p> Téléphone : <strong> <?php echo $professeur -> getTelephoneProfesseur(); ?> </strong></p>
                     <p> Adresse mail : <strong> <?php echo $_SESSION['email'] ?> </strong></p>
-                    <p> Qualité : <strong> <?php if ($_SESSION['idQualiteProfesseur'] == 1) {
-
-                                                    echo "Responsable de Section";
-
-                                                 } else {
-
-                                                     echo "Professeur référent";
-
-                                                 }
-                    
-                    ?> </strong> </p>
+                    <p> Qualité : <strong> <?php echo $professeur -> getLibelleQualiteProfesseur(); ?> </strong> </p>
 
                 </form>
                 <!-- Fin du formulaire -->

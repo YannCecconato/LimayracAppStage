@@ -56,18 +56,18 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction d'insertion des étudiants */    
-    function insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $idOptionEleve, $libelleCursusEleve, $idGenreEleve) {
-        $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, AdresseEleve, TelephoneEleve, EmailEleve, IdOptionEleve, LibelleCursusEleve, IdGenreEleve) ";
-        $sql .="VALUES (:prenomEleve, :nomEleve, :adresseEleve, :telephoneEleve, :emailEleve, :idOptionEleve, :libelleCursusEleve, :idGenreEleve)";
+    function insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $libelleOptionEleve, $libelleCursusEleve, $libelleGenreEleve) {
+        $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, AdresseEleve, TelephoneEleve, EmailEleve, LibelleOptionEleve, LibelleCursusEleve, libelleGenreEleve) ";
+        $sql .="VALUES (:prenomEleve, :nomEleve, :adresseEleve, :telephoneEleve, :emailEleve, :libelleOptionEleve, :libelleCursusEleve, :libelleGenreEleve)";
         $params = array(
         ":prenomEleve" => $prenomEleve,
         ":nomEleve" => $nomEleve,
         ":adresseEleve" => $adresseEleve,
         ":telephoneEleve" => $telephoneEleve,
         ":emailEleve" => $emailEleve,
-        ":idOptionEleve" => $idOptionEleve,
+        ":libelleOptionEleve" => $libelleOptionEleve,
         ":libelleCursusEleve" => $libelleCursusEleve,
-        ":idGenreEleve" => $idGenreEleve
+        ":libelleGenreEleve" => $libelleGenreEleve
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();
@@ -75,26 +75,26 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction pour mettre à jour un élève grâce à son email*/
-    function updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
+    function updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $libelleOptionEleve, $libelleCursusEleve, $libelleGenreEleve) {
         $sql = "UPDATE eleve SET ";
         $sql .= "PrenomEleve = :prenomEleve, ";
         $sql .= "NomEleve = :nomEleve, ";
-        $sql .= "GenreEleve = :genreEleve, ";
         $sql .= "AdresseEleve = :adresseEleve, ";
         $sql .= "TelephoneEleve = :telephoneEleve, ";
         $sql .= "EmailEleve = :emailEleve, ";
-        $sql .= "OptionEleve = :optionEleve, ";
-        $sql .= "LibelleCursusEleve = :libelleCursusEleve ";
+        $sql .= "LibelleOptionEleve = :libelleOptionEleve, ";
+        $sql .= "LibelleCursusEleve = :libelleCursusEleve, ";
+        $sql .= "LibelleGenreEleve = :libelleGenreEleve ";
         $sql .= "WHERE IdEleve = :idEleve";
         $params = array(
-            ":nomEleve" => $nomEleve,
             ":prenomEleve" => $prenomEleve,
-            ":genreEleve" => $genreEleve,
+            ":nomEleve" => $nomEleve,
             ":adresseEleve" => $adresseEleve,
             ":telephoneEleve" => $telephoneEleve,
             ":emailEleve" => $emailEleve,
-            ":optionEleve" => $optionEleve,
+            ":libelleOptionEleve" => $libelleOptionEleve,
             ":libelleCursusEleve" => $libelleCursusEleve,
+            ":libelleGenreEleve" => $libelleGenreEleve,
             ":idEleve" => $idEleve
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
