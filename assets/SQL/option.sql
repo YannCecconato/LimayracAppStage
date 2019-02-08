@@ -1,9 +1,4 @@
-INSERT INTO `option` (IdOption, LibelleOption)
+INSERT INTO `option` (LibelleOption, DescriptifOption)
 VALUES
-(NULL, ""),
-(NULL, ""),
-(NULL, ""),
-(NULL, ""),
-(NULL, ""),
-(NULL, ""),
-(NULL, ""),
+("SLAM", NULL),
+("SISR", NULL);

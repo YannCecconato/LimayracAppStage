@@ -56,18 +56,18 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction d'insertion des étudiants */    
-    function insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve) {
-        $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, GenreEleve, AdresseEleve, TelephoneEleve, EmailEleve, OptionEleve, LibelleCursusEleve) ";
-        $sql .="VALUES (:prenomEleve, :nomEleve, :genreEleve, :adresseEleve, :telephoneEleve, :emailEleve, :optionEleve, :libelleCursusEleve)";
+    function insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $idOptionEleve, $libelleCursusEleve, $idGenreEleve) {
+        $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, AdresseEleve, TelephoneEleve, EmailEleve, IdOptionEleve, LibelleCursusEleve, IdGenreEleve) ";
+        $sql .="VALUES (:prenomEleve, :nomEleve, :adresseEleve, :telephoneEleve, :emailEleve, :idOptionEleve, :libelleCursusEleve, :idGenreEleve)";
         $params = array(
         ":prenomEleve" => $prenomEleve,
         ":nomEleve" => $nomEleve,
-        ":genreEleve" => $genreEleve,
         ":adresseEleve" => $adresseEleve,
         ":telephoneEleve" => $telephoneEleve,
         ":emailEleve" => $emailEleve,
-        ":optionEleve" => $optionEleve,
-        ":libelleCursusEleve" => $libelleCursusEleve
+        ":idOptionEleve" => $idOptionEleve,
+        ":libelleCursusEleve" => $libelleCursusEleve,
+        ":idGenreEleve" => $idGenreEleve
         );
         $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
         $nb = $sth->rowcount();

@@ -1,4 +1,4 @@
-INSERT INTO `qualite` (IdQualite, LibelleQualite)
+INSERT INTO `qualite` (LibelleQualite, DescriptifQualite)
 VALUES
-(1, "Responsable Section"),
-(2, "Professeur référent");
+("Responsable Section", NULL),
+("Professeur référent", NULL);

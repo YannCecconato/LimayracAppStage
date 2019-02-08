@@ -8,7 +8,9 @@ class Professeur {
     private $nomProfesseur = "?";
     private $telephoneProfesseur = "?";
     private $emailProfesseur = "?";
-    private $idGenreProfesseur = 0;
+    private $mdp = "?";
+    private $libelleQualiteProfesseur = "?";
+    private $libelleGenreProfesseur = 0;
 
     /** function construct */
     function __construct(array $tableau = null) {
@@ -118,21 +120,61 @@ class Professeur {
     }
 
     /**
-     * Get the value of idGenreProfesseur
+     * Get the value of mdp
      */ 
-    public function getIdGenreProfesseur()
+    public function getMdp()
     {
-        return $this->idGenreProfesseur;
+        return $this->mdp;
     }
 
     /**
-     * Set the value of idGenreProfesseur
+     * Set the value of mdp
      *
      * @return  self
      */ 
-    public function setIdGenreProfesseur($idGenreProfesseur)
+    public function setMdp($mdp)
     {
-        $this->idGenreProfesseur = $idGenreProfesseur;
+        $this->mdp = $mdp;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of libelleQualiteProfesseur
+     */ 
+    public function getLibelleQualiteProfesseur()
+    {
+        return $this->libelleQualiteProfesseur;
+    }
+
+    /**
+     * Set the value of libelleQualiteProfesseur
+     *
+     * @return  self
+     */ 
+    public function setLibelleQualiteProfesseur($libelleQualiteProfesseur)
+    {
+        $this->libelleQualiteProfesseur = $libelleQualiteProfesseur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of libelleGenreProfesseur
+     */ 
+    public function getLibelleGenreProfesseur()
+    {
+        return $this->libelleGenreProfesseur;
+    }
+
+    /**
+     * Set the value of libelleGenreProfesseur
+     *
+     * @return  self
+     */ 
+    public function setLibelleGenreProfesseur($libelleGenreProfesseur)
+    {
+        $this->libelleGenreProfesseur = $libelleGenreProfesseur;
 
         return $this;
     }

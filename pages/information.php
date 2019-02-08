@@ -42,18 +42,7 @@
 
                     <p> Nom : <strong> <?php echo $professeur -> getNomProfesseur(); ?> </strong></p>
                     <p> Prénom : <strong> <?php echo $professeur -> getPrenomProfesseur(); ?> </strong></p>
-                    <p> Sexe : <strong> 
-                        <?php 
-                            if ($professeur -> getIdGenreProfesseur() == 1) {
-
-                                echo "Femme";
-
-                            } else if ($professeur -> getIdGenreProfesseur() == 2) {
-                        
-                                echo "Homme";
-
-                            }
-                        ?> </strong></p>    
+                    <p> Sexe : <strong> <?php echo $professeur -> getLibelleGenreProfesseur(); ?> </strong></p>    
                     <p> Téléphone : <strong> <?php echo $professeur -> getTelephoneProfesseur(); ?> </strong></p>
                     <p> Adresse mail : <strong> <?php echo $_SESSION['email'] ?> </strong></p>
                     <p> Qualité : <strong> <?php if ($_SESSION['idQualiteProfesseur'] == 1) {
@@ -71,18 +60,18 @@
                 </form>
                 <!-- Fin du formulaire -->
 
-                <a href="modifierPerso.php" class="modif_infos"> 
-                    <button class="button">
-                        Vous souhaitez modifier vos informations ? <br/>Cliquez ici
-                    </button>
-                </a>
-
                 <?php
                 
                 ?>
 
             </div> 
             <div id="piedpage">
+
+                <a href="modifierPerso.php" class="modif_infos"> 
+                    <button class="button">
+                        Vous souhaitez modifier vos <strong>INFORMATIONS</strong> ? <br/>Cliquez ici 
+                    </button>
+                </a>
 
             </div>       
         </div>

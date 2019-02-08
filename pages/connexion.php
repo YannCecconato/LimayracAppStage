@@ -33,7 +33,7 @@
                 
                 <!-- Début du formulaire de connexion -->
                 <form action="connexion.php" method="post" class="formulaire">
-
+                
                     <p>Adresse Mail : <input type="text" name="email" required /></p>
                     <p>Mot de passe : <input type="password" name="password" required /></p>
                     <p><input type="submit" name="submit" value="Se connecter" /></p>

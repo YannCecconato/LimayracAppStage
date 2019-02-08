@@ -36,26 +36,27 @@
 
                     <p>Prénom : <input type="text" name="prenom" required /></p>
                     <p>Nom : <input type="text" name="nom" required /></p>
-                    <p> <select name="genre">
-                            <option value="Femme"> Femme </option>
-                            <option value="Homme"> Homme </option>
+                    <p> <select name="idGenreEleve">
+                            <option value=""> Choissisez un sexe </option>
+                            <option value="1"> Femme </option>
+                            <option value="2"> Homme </option>
                         </select>
                     </p>
                     <p>Adresse : <input type="text" name="adresse" /></p>    
                     <p>Numéro de téléphone : <input type="text" name="phone"/></p>
                     <p>Adresse mail : <input type="text" name="email" required /></p>
                     <p> 
-                        <select name="cursus" required>
+                        <select name="libelleCursusEleve" required>
                             <option value=""> Choisissez un cursus </option>
                             <option value="SIO1"> SIO1 </option>
                             <option value="SIO2"> SIO2 </option>
                         </select>
                     </p>
                     <p> 
-                        <select name="option">
+                        <select name="idOptionEleve">
                             <option value=""> Choisissez une option </option>
-                            <option value="SLAM"> Solutions Logicielles et Applications Métiers </option>    
-                            <option value="SISR"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
+                            <option value="1"> Solutions Logicielles et Applications Métiers </option>    
+                            <option value="2"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
                         </select>
                     </p>    
                     <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"></p>
@@ -80,20 +81,20 @@
                             /** Récupère les variables du formulaire */
                             $prenomEleve = $_POST['prenom'];
                             $nomEleve = $_POST['nom'];
-                            $genreEleve = $_POST['genre'];
                             $adresseEleve = $_POST['adresse'];
                             $telephoneEleve = $_POST['phone'];
                             $emailEleve = $_POST['email'];
-                            $optionEleve = $_POST['option'];
-                            $libelleCursusEleve = $_POST['cursus'];
+                            $idOptionEleve = $_POST['idOptionEleve'];
+                            $libelleCursusEleve = $_POST['libelleCursusEleve'];
+                            $idGenreEleve = $_POST['idGenreEleve'];
 
                             $eleve = new EleveDAO();
 
                             if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un élève */
-                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $genreEleve, $adresseEleve, $telephoneEleve, $emailEleve, $optionEleve, $libelleCursusEleve);
-                                    header ("Location: gestionEleve.php");
+                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $idOptionEleve, $libelleCursusEleve, $idGenreEleve);
+                                    header ("Location: consulterEleve.php");
 
                             } else { /** L'email saisit est déjà utilisé */
 

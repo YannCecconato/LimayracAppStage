@@ -1,4 +1,4 @@
-INSERT INTO `genre` (IdGenre, Civilite)
+INSERT INTO `genre` (LibelleGenre, DescriptifGenre)
 VALUES
-(1, "Femme"),
-(2, "Homme");
+("Femme", NULL),
+("Homme", NULL);

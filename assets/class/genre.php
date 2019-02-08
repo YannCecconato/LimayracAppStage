@@ -3,53 +3,52 @@
 class Genre {
 
     /* Déclaration des variables */
-    private $idGenre = 0;
-    private $civilite = "?";
+    private $libelleGenre = "?";
+    private $descriptifGenre = "?";
 
     /* function construct */
     function __construct(array $tableau = null) {
         if ($tableau != null) {
             $this->hydrater($tableau);
         }
-    } /* function construct */
-    
-
-    /**
-     * Get the value of idGenre
-     */ 
-    public function getIdGenre()
-    {
-        return $this->idGenre;
     }
 
     /**
-     * Set the value of idGenre
+     * Get the value of libelleGenre
+     */ 
+    public function getLibelleGenre()
+    {
+        return $this->libelleGenre;
+    }
+
+    /**
+     * Set the value of libelleGenre
      *
      * @return  self
      */ 
-    public function setIdGenre($idGenre)
+    public function setLibelleGenre($libelleGenre)
     {
-        $this->idGenre = $idGenre;
+        $this->libelleGenre = $libelleGenre;
 
         return $this;
     }
 
     /**
-     * Get the value of civilite
+     * Get the value of descriptifGenre
      */ 
-    public function getCivilite()
+    public function getDescriptifGenre()
     {
-        return $this->civilite;
+        return $this->descriptifGenre;
     }
 
     /**
-     * Set the value of civilite
+     * Set the value of descriptifGenre
      *
      * @return  self
      */ 
-    public function setCivilite($civilite)
+    public function setDescriptifGenre($descriptifGenre)
     {
-        $this->civilite = $civilite;
+        $this->descriptifGenre = $descriptifGenre;
 
         return $this;
     }
