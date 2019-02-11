@@ -3,8 +3,6 @@
     include "../assets/include/global.inc.php";
     session_start();
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -36,21 +34,23 @@
                 <!-- Début du formulaire d'inscription du professeur référent -->
                 <form action="ajoutProfesseur.php" method="post" class="formulaire">
 
-                    <p>Prénom : <input type="text" name="prenom" required /></p>
-                    <p>Nom : <input type="text" name="nom" required /></p>
-                    <p>Sexe : <select name="libelleGenreProfesseur">
+                    <p> Prénom : <input type="text" name="prenom" required /></p>
+                    <p> Nom : <input type="text" name="nom" required /></p>
+                    <p> Sexe : 
+                        <select name="libelleGenreProfesseur">
                             <option value="Femme"> Femme </option>
                             <option value="Homme"> Homme </option>
                         </select>
                     </p>
-                    <p>Numéro de téléphone : <input type="text" name="phone"/></p>
-                    <p>Adresse mail : <input type="text" name="email" required /></p>
+                    <p> Numéro de téléphone : <input type="text" name="phone"/></p>
+                    <p> Adresse mail : <input type="text" name="email" required /></p>
+                    <p> Mot de passe : <input type="password" name="password" required /></p>
+                    <p> Confirmation mot de passe : <input type="password" name="confirm_pass" required /></p>
                     <p><input type="hidden" name="libelleQualiteProfesseur" value="Professeur référent"/></p>    
                     <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"/></p>
 
                 </form>
                 <!-- Fin du formulaire d'inscription du professeur référent -->
-
 
                 <?php    
 
@@ -70,6 +70,8 @@
                             $nomProfesseur = $_POST['nom'];
                             $telephoneProfesseur = $_POST['phone'];
                             $emailProfesseur = $_POST['email'];
+                            $password = $_POST['password'];
+                            $password_confirm = $_POST['confirm_pass'];
                             $libelleQualiteProfesseur = $_POST['libelleQualiteProfesseur'];
                             $libelleGenreProfesseur = $_POST['libelleGenreProfesseur'];
 
@@ -77,9 +79,19 @@
 
                             if ($newprofesseur->is_mail_exist($emailProfesseur) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
+                                if ($password == $password_confirm) {
+
+                                    $password = password_hash($password, PASSWORD_BCRYPT); /** Hachage du mot de passe */
+
                                     /** Création d'un professeur */
-                                    $newprofesseur -> inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $libelleQualiteProfesseur, $libelleGenreProfesseur);
+                                    $newprofesseur -> inscriptionProfesseur($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $password, $libelleQualiteProfesseur, $libelleGenreProfesseur);
                                     header ("Location: consulterProfesseur.php");
+
+                                } else { /** Si les 2 mots de passe ne sont pas identiques */
+
+                                    echo '<p class="erreur">Les 2 mots de passe ne sont pas identiques.</p>';
+
+                                }
 
                             } else { /** L'email saisit est déjà utilisé */
 

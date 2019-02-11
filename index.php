@@ -38,6 +38,8 @@
                     } else {
 
                         echo '<p>Bienvenue sur le site de gestion des stages, veuillez vous connecter ou vous inscrire afin d\'avoir accès aux fonctionnalités du site.</p>';
+                        echo '<p>Si vous êtes <strong>Responsable de Section</strong>, nous vous invitons à créer un compte en utilisant l\'onglet "Inscription" ou à vous connecter en utilisant l\'onglet "Connexion Responsable"</p>';
+                        echo '<p>Cependant, si vous êtes <strong>Professeur Référent</strong>, nous vous invitons à vous connecter en allant sur l\'onglet "Connexion Référent" avec vos identifiants fournis par votre Responsable de Section</p>';
 
                     }    
                 ?>

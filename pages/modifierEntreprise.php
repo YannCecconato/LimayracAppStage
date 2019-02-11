@@ -40,7 +40,7 @@
                 <!-- Début du formulaire -->
                 <form action="modifierEntreprise.php?idEntreprise=<?php echo $entreprise -> getIdEntreprise(); ?>" method="post" class="formulaire">
 
-                <p><input type="hidden" name="idEntreprise" value="<?php $entreprise -> getIdEntreprise(); ?>"/></p>
+                <p><input type="hidden" name="idEntreprise" value="<?php echo $entreprise -> getIdEntreprise(); ?>"/></p>
                 <p>Nom : <input type="text" name="denomination" value="<?php echo $entreprise -> getDenomination(); ?>" /></p>
                 <p>Adresse : <input type="text" name="adresse" value="<?php echo $entreprise -> getAdresseEntreprise(); ?>"/></p>
                 <p>Code postal : <input type="text" name="cp" value="<?php echo $entreprise -> getCp(); ?>"/></p>
@@ -66,7 +66,7 @@
                     $adresseEntreprise = $_POST['adresse'];
                     $cp = $_POST['cp'];
                     $ville = $_POST['ville'];
-                    $phone = $_POST['phone'];
+                    $telephoneEntreprise = $_POST['phone'];
                     $fax = $_POST['fax'];
                     $nbStage = $_POST['nbStage'];
 

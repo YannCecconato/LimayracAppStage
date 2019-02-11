@@ -9,7 +9,8 @@
                         if (isset($_SESSION['email']) == false){ /** Si la session n'est pas activée */
 
                             echo '<li class="right"><a href="pages/inscription.php" class="a_menu"> Inscription </a></li>';
-                            echo '<li class="right"><a href="pages/connexion.php" class="a_menu"> Connexion </a></li>';
+                            echo '<li class="right"><a href="pages/connexionRS.php" class="a_menu"> Connexion Responsable </a></li>';
+                            echo '<li class="right"><a href="pages/connexionPR.php" class="a_menu"> Connexion Référent </a></li>';
 
                         } else if ($_SESSION['libelleQualiteProfesseur'] == "Responsable Section") { /** Si le professeur est un responsable de section */
 
@@ -20,9 +21,12 @@
                             echo '<li class="active"><a href="pages/gestionEntreprise.php" class="a_menu"> Entreprises </a></li>';
 
                         } else if ($_SESSION['libelleQualiteProfesseur'] == "Professeur référent") { /** Si le professeur est un professeur référent */
-
                             
-
+                            echo '<li class="right"><a href="pages/deconnexion.php" class="a_menu"> Se déconnecter </a></li>';
+                            echo '<li class="right"><a href="pages/perso.php" class="a_menu"> Espace personnel </a></li>';
+                            echo '<li class="active"><a href="pages/evaluation.php" class="a_menu"> Évaluation </a></li>';
+                            echo '<li class="active"><a href="pages/gestionEleve.php" class="a_menu"> Élèves </a></li>';
+                            
                         }
 
                     ?>

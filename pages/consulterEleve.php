@@ -48,6 +48,7 @@
                 echo "<th>Cursus</th>";
                 echo "<th>Modifier</th>";
                 echo "<th>Supprimer</th>";
+                echo "<th>Évaluer</th>";
                 echo "</tr>";
 
                 foreach ($eleves as $eleve) {
@@ -63,6 +64,7 @@
                     echo "<td>". $eleve -> getLibelleCursusEleve() ."</td>";
                     echo '<td><a href="modifierEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Modifier </td>';
                     echo '<td><a href="supprimerEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Supprimer </td>';
+                    echo '<td><a href="evaluerEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Évaluer </td>';
                     echo "</tr>";
 
                 }

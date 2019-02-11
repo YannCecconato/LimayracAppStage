@@ -45,7 +45,7 @@
                     </select></p>        
                     <p> Numéro de téléphone : <input type="text" name="phone" required /></p>
                     <p> Adresse Mail : <input type="text" name="email" required /></p>
-                    <p >Mot de passe : <input type="password" name="password" required /></p>
+                    <p> Mot de passe : <input type="password" name="password" required /></p>
                     <p> Confirmation mot de passe : <input type="password" name="confirm_pass" required /></p>
                     <p><input type="hidden" name="libelleQualiteProfesseur" value="Responsable Section"/></p>
                     <p><input type="submit" name="submit" value="S'inscrire" /><input type="reset" value="Réinitialiser"></p>

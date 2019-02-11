@@ -8,7 +8,7 @@ class ProfesseurDAO extends DAO {
     }
 
 /** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
-    function find($idProfesseur){
+    function find($idProfesseur) {
         $sql = "SELECT * FROM professeur WHERE IdProfesseur = :idProfesseur";
         try {
             $sth = $this->pdo->prepare($sql);
@@ -115,27 +115,6 @@ class ProfesseurDAO extends DAO {
                     ':telephoneProfesseur' => $telephoneProfesseur,
                     ':emailProfesseur' => $emailProfesseur,
                     ':mdp' => $mdp,
-                    ':libelleQualiteProfesseur' => $libelleQualiteProfesseur,
-                    ':libelleGenreProfesseur' => $libelleGenreProfesseur
-                ));
-            } catch (PDOException $ex) {
-
-                die("Erreur lors de la requête SQL : " . $ex->getMessage());
-
-            }    
-    }
-
-/** Fonction pour inscrire un professeur par le Responsable de Section */
-    function inscriptionProfesseurByRS($prenomProfesseur, $nomProfesseur, $telephoneProfesseur, $emailProfesseur, $libelleQualiteProfesseur, $libelleGenreProfesseur) {
-        $sql = "INSERT INTO professeur (PrenomProfesseur, NomProfesseur, TelephoneProfesseur, EmailProfesseur, LibelleQualiteProfesseur, LibelleGenreProfesseur) ";
-        $sql .= "VALUES (:prenomProfesseur, :nomProfesseur, :telephoneProfesseur, :emailProfesseur, :libelleQualiteProfesseur, :libelleGenreProfesseur)";
-            try {
-                $sth = $this->pdo->prepare($sql);
-                $sth->execute(array(
-                    ':prenomProfesseur' => $prenomProfesseur,
-                    ':nomProfesseur' => $nomProfesseur,
-                    ':telephoneProfesseur' => $telephoneProfesseur,
-                    ':emailProfesseur' => $emailProfesseur,
                     ':libelleQualiteProfesseur' => $libelleQualiteProfesseur,
                     ':libelleGenreProfesseur' => $libelleGenreProfesseur
                 ));

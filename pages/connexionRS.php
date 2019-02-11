@@ -10,7 +10,7 @@
     <head>
         <meta charset="UTF-8">
 
-                <title>Connexion</title>
+                <title>Connexion Responsable de Section</title>
 
         <link rel="stylesheet" type="text/css" href="../assets/css/styles.css" />
     </head>
@@ -29,10 +29,10 @@
             </div>
             <div id="contenu">
 
-                <p> Veuillez vous connecter pour poursuivre sur le site. </p>
+                <p> Bonjour <strong>Responsable de Section</strong> </p><p> Veuillez vous connecter pour poursuivre sur le site. </p>
                 
                 <!-- Début du formulaire de connexion -->
-                <form action="connexion.php" method="post" class="formulaire">
+                <form action="connexionRS.php" method="post" class="formulaire">
                 
                     <p>Adresse Mail : <input type="text" name="email" required /></p>
                     <p>Mot de passe : <input type="password" name="password" required /></p>
