@@ -6,7 +6,8 @@ class Contact {
     private $idContact = 0;
     private $nomContact = "?";
     private $prenomContact = "?";
-    private $mail = "?";
+    private $emailContact = "?";
+    private $telephoneContact ="?";
     private $idEntrepriseContact = "?";
     private $idFonctionContact = "?";
     private $idGenreContact = 0;
@@ -79,21 +80,41 @@ class Contact {
     }
 
     /**
-     * Get the value of mail
+     * Get the value of emailContact
      */ 
-    public function getMail()
+    public function getEmailContact()
     {
-        return $this->mail;
+        return $this->emailContact;
     }
 
     /**
-     * Set the value of mail
+     * Set the value of emailContact
      *
      * @return  self
      */ 
-    public function setMail($mail)
+    public function setEmailContact($emailContact)
     {
-        $this->mail = $mail;
+        $this->emailContact = $emailContact;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of telephoneContact
+     */ 
+    public function getTelephoneContact()
+    {
+        return $this->telephoneContact;
+    }
+
+    /**
+     * Set the value of telephoneContact
+     *
+     * @return  self
+     */ 
+    public function setTelephoneContact($telephoneContact)
+    {
+        $this->telephoneContact = $telephoneContact;
 
         return $this;
     }

@@ -19,13 +19,14 @@
                             echo '<li class="active"><a href="pages/gestionEleve.php" class="a_menu"> Élèves </a></li>';
                             echo '<li class="active"><a href="pages/gestionProfesseur.php" class="a_menu"> Professeurs </a></li>';
                             echo '<li class="active"><a href="pages/gestionEntreprise.php" class="a_menu"> Entreprises </a></li>';
+                            echo '<li class="active"><a href="pages/gestionSujet.php" class="a_menu"> Sujets </a></li>';
 
                         } else if ($_SESSION['libelleQualiteProfesseur'] == "Professeur référent") { /** Si le professeur est un professeur référent */
                             
                             echo '<li class="right"><a href="pages/deconnexion.php" class="a_menu"> Se déconnecter </a></li>';
                             echo '<li class="right"><a href="pages/perso.php" class="a_menu"> Espace personnel </a></li>';
-                            echo '<li class="active"><a href="pages/evaluation.php" class="a_menu"> Évaluation </a></li>';
                             echo '<li class="active"><a href="pages/gestionEleve.php" class="a_menu"> Élèves </a></li>';
+                            echo '<li class="active"><a href="pages/gestionSujet.php" class="a_menu"> Sujets </a></li>';
                             
                         }
 

@@ -25,7 +25,7 @@ VALUES
 (NULL, "IUCT - ONCOPOLE", "1 Avenue Irène Joliot-Curie", 31100, "Toulouse", "05.31.15.50.50", NULL, 1),
 (NULL, "TECH MAHINDRA LIMITED", "22 Boulevard Deodat de Sévérac", 31770, "Colomiers", "05.61.15.25.10", NULL, 1),
 (NULL, "CESARE NORI", "23 Place Victor Hugo", 31000, "Toulouse", "05.61.22.89.56", NULL, 1),
-(NULL, "BELVIA IMMOBILIER", "16 Impasse René Couzinet", 31500, "Toulouse", "08.21.21.01.01", "Non rensegné", 1),
+(NULL, "BELVIA IMMOBILIER", "16 Impasse René Couzinet", 31500, "Toulouse", "08.21.21.01.01", NULL, 1),
 (NULL, "SRA SUD OUEST", "109 Avenue de Lespinet", 31500, "Toulouse", "05.31.47.15.15", NULL, 1),
 (NULL, "QUADRAN", "8 Rue Louis Courtois de Viçose", 31100, "Toulouse", "05.34.56.21.70", NULL, 1),
 (NULL, "CENTRE HOSPITALIER ARIEGE COUSERANS", "1 Chemin de Cailloup", 09100, "Pamiers", "05.61.96.20.20", NULL, 1),
@@ -44,4 +44,3 @@ VALUES
 (NULL, "INFOMIL", "15 Rue Paul Mesplé", 31100, "Toulouse", "05.67.76.20.00", NULL, 1),
 (NULL, "AIRBUS OPERATION SAS", "316 route de Bayonne", 31300, "Toulouse", "05.61.93.55.55", NULL, 1),
 (NULL, "OPERANTIS", "23 Rue Jean Monnet", 31240, "Saint-Jean", "05.31.61.69.11", NULL, 1);
-

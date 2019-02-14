@@ -31,7 +31,7 @@ class EleveDAO extends DAO {
         return $eleve;
 
     }
-    }    
+    }
 
 /** function findAll() */ 
     function findAll() {

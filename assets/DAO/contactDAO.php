@@ -7,6 +7,78 @@ class ContactDAO extends DAO {
         parent::__construct();
     }
 
+/** Fonction pour obtenir toutes les infos d'un contact grâce à son ID */ 
+    function find($idContact){
+        $sql = "SELECT * FROM contact WHERE IdContact = :idContact";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idContact' => $idContact
+        ));
+    $row = $sth->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $ex) {
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+    }
+    if ($row == NULL) {
+
+        return NULL;
+
+    } else {
+
+        $contact = new Contact($row);
+        return $contact;
+
+    }
+    }
+
+/** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
+    function findByIdEntreprise($idEntrepriseContact){
+        $sql = "SELECT * FROM contact WHERE IdEntrepriseContact = :idEntrepriseContact";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ':idEntrepriseContact' => $idEntrepriseContact
+        ));
+    $row = $sth->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $ex) {
+        throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+    }
+    if ($row == NULL) {
+
+        return NULL;
+
+    } else {
+
+        $contact = new Contact($row);
+        return $contact;
+
+    }
+    }
+
+/** function findAll() */ 
+    function findAll() {
+        $sql = "SELECT * FROM contact";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute();
+            $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+    $contacts = array();
+    foreach ($rows as $row) {
+
+        $contacts[] = new contact($row);
+
+    }
+
+    /** Retourne un tableau d'objets "eleve" */ 
+    return $contacts;
+
+    }
+
+
+
 }
 
 

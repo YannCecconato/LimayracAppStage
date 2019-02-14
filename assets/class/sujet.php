@@ -7,20 +7,11 @@ class Sujet {
     private $descriptifSujet = "?";
     private $dateDebut = "?";
     private $dateFin = "?";
-    private $absence = 0;
-    private $retard = 0;
-    private $integrationEquipe = 0;
-    private $autonomie = 0;
-    private $adaptation = 0;
-    private $realisationSatisfaisante = 0;
-    private $curiosite = 0;
-    private $etudiantStage2nd = 0;
-    private $participationE6 = 0;
     private $idEleveSujet = 0;
+    private $idStatutSujet = 0;
     private $idProfesseurSujet = 0;
     private $idEntrepriseSujet = 0;
     private $idContactSujet = 0;
-    private $idRessourceSujet = 0;
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -109,186 +100,7 @@ class Sujet {
         return $this;
     }
 
-    /**
-     * Get the value of absence
-     */ 
-    public function getAbsence()
-    {
-        return $this->absence;
-    }
-
-    /**
-     * Set the value of absence
-     *
-     * @return  self
-     */ 
-    public function setAbsence($absence)
-    {
-        $this->absence = $absence;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of retard
-     */ 
-    public function getRetard()
-    {
-        return $this->retard;
-    }
-
-    /**
-     * Set the value of retard
-     *
-     * @return  self
-     */ 
-    public function setRetard($retard)
-    {
-        $this->retard = $retard;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of integrationEquipe
-     */ 
-    public function getIntegrationEquipe()
-    {
-        return $this->integrationEquipe;
-    }
-
-    /**
-     * Set the value of integrationEquipe
-     *
-     * @return  self
-     */ 
-    public function setIntegrationEquipe($integrationEquipe)
-    {
-        $this->integrationEquipe = $integrationEquipe;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of autonomie
-     */ 
-    public function getAutonomie()
-    {
-        return $this->autonomie;
-    }
-
-    /**
-     * Set the value of autonomie
-     *
-     * @return  self
-     */ 
-    public function setAutonomie($autonomie)
-    {
-        $this->autonomie = $autonomie;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of adaptation
-     */ 
-    public function getAdaptation()
-    {
-        return $this->adaptation;
-    }
-
-    /**
-     * Set the value of adaptation
-     *
-     * @return  self
-     */ 
-    public function setAdaptation($adaptation)
-    {
-        $this->adaptation = $adaptation;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of realisationSatisfaisante
-     */ 
-    public function getRealisationSatisfaisante()
-    {
-        return $this->realisationSatisfaisante;
-    }
-
-    /**
-     * Set the value of realisationSatisfaisante
-     *
-     * @return  self
-     */ 
-    public function setRealisationSatisfaisante($realisationSatisfaisante)
-    {
-        $this->realisationSatisfaisante = $realisationSatisfaisante;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of curiosite
-     */ 
-    public function getCuriosite()
-    {
-        return $this->curiosite;
-    }
-
-    /**
-     * Set the value of curiosite
-     *
-     * @return  self
-     */ 
-    public function setCuriosite($curiosite)
-    {
-        $this->curiosite = $curiosite;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of etudiantStage2nd
-     */ 
-    public function getEtudiantStage2nd()
-    {
-        return $this->etudiantStage2nd;
-    }
-
-    /**
-     * Set the value of etudiantStage2nd
-     *
-     * @return  self
-     */ 
-    public function setEtudiantStage2nd($etudiantStage2nd)
-    {
-        $this->etudiantStage2nd = $etudiantStage2nd;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of participationE6
-     */ 
-    public function getParticipationE6()
-    {
-        return $this->participationE6;
-    }
-
-    /**
-     * Set the value of participationE6
-     *
-     * @return  self
-     */ 
-    public function setParticipationE6($participationE6)
-    {
-        $this->participationE6 = $participationE6;
-
-        return $this;
-    }
-
+    
     /**
      * Get the value of idEleveSujet
      */ 
@@ -305,6 +117,27 @@ class Sujet {
     public function setIdEleveSujet($idEleveSujet)
     {
         $this->idEleveSujet = $idEleveSujet;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of idStatutSujet
+     */ 
+    public function getIdStatutSujet()
+    {
+        return $this->idStatutSujet;
+    }
+
+    /**
+     * Set the value of idStatutSujet
+     *
+     * @return  self
+     */ 
+    public function setIdStatutSujet($idStatutSujet)
+    {
+        $this->idStatutSujet = $idStatutSujet;
 
         return $this;
     }
@@ -398,7 +231,6 @@ class Sujet {
             }
         }
     } /* function hydrater */
-
 }
 
 

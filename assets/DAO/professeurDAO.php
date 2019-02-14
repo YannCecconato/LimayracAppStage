@@ -85,7 +85,7 @@ class ProfesseurDAO extends DAO {
         return $professeur; /** Retourne l'objet métier */
     }
 
-/** Fonction pour trouver les informations d'un professeur grâce à son adresse mail */
+/** Fonction pour trouver les informations d'un professeur grâce à sa qualité */
     function findByLibelleQualiteProfesseur($libelleQualiteProfesseur) {
         $sql = "SELECT * FROM professeur WHERE IdQualiteProfesseur = :idQualiteProfesseur";
         try {
