@@ -166,25 +166,8 @@ CREATE TABLE `utiliser` (
 
 CREATE TABLE `ressource` (
     `IdRessource`       int(11) NOT NULL,
-    `LibelleRessource`  varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Structure de la table `materiel`
--- Spécialisation de la table `ressource`
---
-
-CREATE TABLE `materiel` (
-    `IdRessourceMateriel`   int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Structure de la table `logiciel`
--- Spécialisation de la table `ressource`
---
-
-CREATE TABLE `logiciel` (
-    `IdRessourceLogiciel`   int(11) DEFAULT NULL
+    `LibelleRessource`  varchar(20) DEFAULT NULL,
+    `TypeRessource`     varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -270,7 +253,7 @@ CREATE TABLE `contact` (
 
 CREATE TABLE `fonction` (
     `IdFonction`        int(11) NOT NULL,
-    `LibelleFonction`   int(11) DEFAULT NULL
+    `LibelleFonction`   varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -384,20 +367,6 @@ ALTER TABLE `utiliser`
 
 ALTER TABLE `ressource`
     ADD PRIMARY KEY (`IdRessource`);
-
---
--- Index pour la table `materiel`
---
-
-ALTER TABLE `materiel`
-    ADD PRIMARY KEY (`IdRessourceMateriel`);
-
---
--- Index pour la table `logiciel`
---
-
-ALTER TABLE `logiciel`
-    ADD PRIMARY KEY (`IdRessourceLogiciel`);
 
 --
 -- Index pour la table `statut`
@@ -602,20 +571,6 @@ ALTER TABLE `parametre`
 ALTER TABLE `utiliser`
     ADD CONSTRAINT `FK_Utiliser_IdSujet` FOREIGN KEY (`IdSujetUtiliser`) REFERENCES `sujet` (`IdSujet`),
     ADD CONSTRAINT `FK_Utiliser_IdRessource` FOREIGN KEY (`IdRessourceUtiliser`) REFERENCES `ressource` (`IdRessource`);
-
---
--- Contraintes pour la table `materiel`
---
-
-ALTER TABLE `materiel`
-    ADD CONSTRAINT `FK_Materiel_IdRessource` FOREIGN KEY (`IdRessourceMateriel`) REFERENCES `ressource` (`IdRessource`);
-
---
--- Contraintes pour la table `logiciel`
---
-
-ALTER TABLE `logiciel`
-    ADD CONSTRAINT `FK_Logiciel_IdRessource` FOREIGN KEY (`IdRessourceLogiciel`) REFERENCES `ressource` (`IdRessource`);
 
 --
 -- Contraintes pour la table `retrouver`

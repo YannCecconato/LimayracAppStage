@@ -20,6 +20,9 @@
 
     $contactDAO = new contactDAO();
     $contacts = $contactDAO -> findAll();
+
+    $ressourceDAO = new ressourceDAO();
+    $ressources = $ressourceDAO -> findAll();
     
 ?>
 
@@ -119,7 +122,7 @@
                             ?> 
                         </select>
                     </p>
-                    <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"></p>
+                    <p><input type="submit" name="submit" value="Ajouter" /><input type="reset" value="Réinitialiser"></p>
 
                 </form>
                 <!-- Fin du formulaire d'inscription de l'élève-->

@@ -3,6 +3,15 @@
     include "../assets/include/global.inc.php";
     session_start();
 
+    $genreDAO = new genreDAO();
+    $genres = $genreDAO -> findALl();
+
+    $cursusDAO = new cursusDAO();
+    $cursuss = $cursusDAO -> findAll();
+
+    $optionDAO = new optionDAO();
+    $options = $optionDAO -> findAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +47,15 @@
                     <p>Nom : <input type="text" name="nom" required /></p>
                     <p> <select name="libelleGenreEleve">
                             <option value=""> Choissisez un sexe </option>
-                            <option value="Femme"> Femme </option>
-                            <option value="Homme"> Homme </option>
+                            <?php 
+
+                            foreach ($genres as $genre) {
+
+                                echo '<option'.' value="'. $genre -> getLibelleGenre() .'">'. $genre -> getLibelleGenre() .'</option>';
+
+                            }
+
+                            ?>
                         </select>
                     </p>
                     <p>Adresse : <input type="text" name="adresse" /></p>    
@@ -48,15 +64,29 @@
                     <p> 
                         <select name="libelleCursusEleve" required>
                             <option value=""> Choisissez un cursus </option>
-                            <option value="SIO1"> SIO1 </option>
-                            <option value="SIO2"> SIO2 </option>
+                            <?php 
+
+                            foreach ($cursuss as $cursus) {
+
+                                echo '<option'.' value="'. $cursus -> getLibelleCursus() .'">'. $cursus -> getLibelleCursus() .'</option>';
+
+                            }
+
+                            ?>
                         </select>
                     </p>
                     <p> 
                         <select name="idOptionEleve">
                             <option value=""> Choisissez une option </option>
-                            <option value="SLAM"> Solutions Logicielles et Applications Métiers </option>    
-                            <option value="SISR"> Solutions d’Infrastructures, Systèmes et Réseaux </option>
+                            <?php 
+
+                            foreach ($options as $option) {
+
+                                echo '<option'.' value="'. $option -> getLibelleOption() .'">'. $option -> getLibelleOption() .'</option>';
+
+                            }
+
+                            ?>
                         </select>
                     </p>    
                     <p><input type="submit" name="submit" value="Inscrire" /><input type="reset" value="Réinitialiser"></p>

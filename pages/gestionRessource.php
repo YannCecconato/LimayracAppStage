@@ -29,14 +29,15 @@ session_start();
 
                 <?php
                 
-                include "../assets/include/menuGestionEleve.php";
+                include "../assets/include/menuGestionRessource.php";
                 
                 ?>
                 
             </div>
             <div id="contenu">
 
-                <p>Ici, vous pouvez gérer les élèves en ajoutant, consultant, supprimant ou modifiant leurs données.</p>
+                <p>Ici, vous pouvez gérer les ressources matérielles et logicielles en ajoutant, consultant, supprimant ou modifiant leurs données.</p>
+                
 
             </div> 
             <div id="piedpage">

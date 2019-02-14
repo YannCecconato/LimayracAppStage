@@ -5,6 +5,7 @@ class Ressource {
     /* Déclaration des varibles */
     private $idressource = 0;
     private $libelleressource = "?";
+    private $typeRessource = "?";
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -53,6 +54,27 @@ class Ressource {
         return $this;
     }
 
+
+    /**
+     * Get the value of typeRessource
+     */ 
+    public function getTypeRessource()
+    {
+        return $this->typeRessource;
+    }
+
+    /**
+     * Set the value of typeRessource
+     *
+     * @return  self
+     */ 
+    public function setTypeRessource($typeRessource)
+    {
+        $this->typeRessource = $typeRessource;
+
+        return $this;
+    }
+
     /* function hydrater */
     function hydrater(array $tableau) {
         foreach ($tableau as $cle => $valeur) {
@@ -61,8 +83,7 @@ class Ressource {
                     $this->$methode($valeur);
             }
         }
-    } /* function hydrater */
-
+    }
 }
 
 ?>

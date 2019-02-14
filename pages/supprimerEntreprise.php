@@ -59,11 +59,6 @@
                 /** Récupère les champs du formulaire */
                 $submit = isset($_POST['submit']) ? $_POST['submit'] : "";
                 
-                if ($submit) {
-
-                    
-
-                    }
                     if ($submit) {
 
                         /** Récupère les variables du formulaire */

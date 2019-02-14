@@ -3,6 +3,9 @@
     include "../assets/include/global.inc.php";
     session_start();
 
+    $genreDAO = new genreDAO();
+    $genres = $genreDAO -> findALl();
+
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +41,16 @@
                     <p> Nom : <input type="text" name="nom" required /></p>
                     <p> Sexe : 
                         <select name="libelleGenreProfesseur">
-                            <option value="Femme"> Femme </option>
-                            <option value="Homme"> Homme </option>
+                            <option value=""> Choisissez un sexe </option>
+                            <?php 
+
+                                foreach ($genres as $genre) {
+
+                                    echo '<option'.' value="'. $genre -> getLibelleGenre() .'">'. $genre -> getLibelleGenre() .'</option>';
+
+                                }
+
+                            ?>
                         </select>
                     </p>
                     <p> Numéro de téléphone : <input type="text" name="phone"/></p>

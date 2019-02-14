@@ -4,7 +4,7 @@
     session_start();
 
     $entrepriseDAO = new entrepriseDAO();
-    $entreprises = $entrepriseDAO->findAll();
+    $entreprises = $entrepriseDAO -> findAll();
 
 ?>
 

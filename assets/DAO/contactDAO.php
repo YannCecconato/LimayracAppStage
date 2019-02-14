@@ -77,6 +77,24 @@ class ContactDAO extends DAO {
 
     }
 
+    /** Fonction d'insertion des étudiants */    
+    function insertionContact($nomContact, $prenomContact, $emailContact, $telephoneContact, $idEntreprise, $idFonction, $libelleGenreContact) {
+        $sql = "INSERT INTO eleve (NomContact, PrenomContact, EmailContact, TelephoneContact, IdEntreprise, IdFonction, LibelleGenreContact) ";
+        $sql .="VALUES (:nomContact, :prenomContact, :emailContact, :telephoneContact, :idEntreprise, :idFonction, :libelleGenreContact)";
+        $params = array(
+        ":nomContact" => $nomContact,
+        ":prenomContact" => $prenomContact,
+        ":emailContact" => $emailContact,
+        ":telephoneContact" => $telephoneContact,
+        ":idEntreprise" => $idEntreprise,
+        ":idFonction" => $idFonction,
+        ":libelleGenreContact" => $libelleGenreContact
+        );
+        $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
+        $nb = $sth->rowcount();
+        return $nb; /** Retourne le nombre de mise à jour */
+    }
+
 
 
 }
