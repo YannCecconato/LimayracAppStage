@@ -4,7 +4,7 @@
     session_start();
 
     $sujetDAO = new sujetDAO();
-    $sujets = $sujetDAO->findAll();
+    $sujets = $sujetDAO -> findAll();
 
 ?>
 
@@ -30,18 +30,17 @@
                 </ul>
             </div>
             <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionSujet.php";
+                
+            ?>
                 
             </div>
             <div id="contenu">
-                <form action="ConsulterSujet.php" method="post" class="formulaire">
-                    <p> Rechercher un sujet par nom : <input type="text" name="recherche" placeholder="Recherche" />
-                    <input type="submit" name="submit" value="Recherche" /></p>
-                </form>
 
             <?php
-            
-                $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
-                $submit = isset($_POST['submit']);
 
                 echo "<table>";
                 echo "<tr>";

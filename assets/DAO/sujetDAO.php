@@ -19,17 +19,18 @@ class SujetDAO extends DAO {
     } catch (PDOException $ex) {
         throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
     }
-    if ($row == NULL) {
+        if ($row == NULL) {
 
-        return NULL;
+            return NULL;
 
-    } else {
+        } else {
 
-        $sujet = new Sujet($row);
-        return $sujet;
+            $sujet = new Sujet($row);
+            return $sujet;
 
+        }
     }
-    }
+
 
 /** function findAll() */ 
     function findAll() {

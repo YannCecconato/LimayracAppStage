@@ -1,3 +1,26 @@
-INSERT INTO `eleve` (IdEleve, PrenomEleve, NomEleve, GenreEleve, AdresseEleve, TelephoneEleve, Specialisation, IdProfesseurEleve, LibelleClasseEleve)
+INSERT INTO `eleve` (IdEleve, PrenomEleve, NomEleve, AdresseEleve, TelephoneEleve, EmailEleve, LibelleCursusEleve, LibelleOptionEleve, LibelleGenreEleve)
 VALUES
-();
+(NULL, "ALBOUY", "Benjamin", "", "06.40.66.42.75", "benji.albouy@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "BARBÉ", "Paco", "", "06.72.82.46.36", "paco.barbe@outlook.fr", "SIO2", "SLAM", "Homme"),
+(NULL, "BARTHE", "Damien", "", "06.73.05.64.85", "damien09200@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "BELLINO", "Antoine", "", "06.28.73.48.85", "antoine.bellino@limayrac.fr", "SIO2", "SLAM", "Homme"),
+(NULL, "BONNEFONT", "Clément", "", "06.86.57.62.00", "clement.bonnefont1@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "BOUBE-ASTUGUE", "Antoine", "", "06.86.67.29.85", "boubeastugue@outlook.fr", "SIO2", "SLAM", "Homme"),
+(NULL, "BOUHCHIR", "Othman", "", "06.50.21.05.63", "othman.bouhchir@limayrac.fr", "SIO2", "SLAM", "Homme"),
+(NULL, "BRY", "Quentin", "", "06.47.99.70.42", "quentinbry975@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "CALAS", "Benoit", "", "06.05.18.68.46", "benoit.calas@limayrac.fr", "SIO2", "SISR", "Homme"),
+(NULL, "CARLES", "Benjamin", "", "06.46.72.43.66", "ben.carles31@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "CARRIÉ", "Romain", "", "06.23.73.30.49", "roro82700@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "CECCONATO", "Yann", "172 rue Edmond Rostand, 31200 TOULOUSE", "06.35.52.57.21", "cecconato.yann@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "DO REGO", "Yann", "", "06.18.71.35.03", "yanndorego@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "ESTIEU", "Vincent", "", "06.30.82.78.26", "estieu.vincent@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "FANJEAUX", "Gaël", "", "06.38.25.80.13", "gael.fanjeaux@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "HUVEY", "Raphaël", "", "06.02.17.41.16", "raphael.huvey@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "ISSANCHOU", "Louis", "", "06.73.41.26.39", "louis.issanchou@limayrac.fr", "SIO2", "SLAM", "Homme"),
+(NULL, "MANDINE", "Louis", "", "06.25.92.15.02", "louis.mandine99@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "MAURIES", "Bertrand", "", "06.73.75.88.27", "betrandmauries51@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "PAGES", "Fabien", "", "06.81.31.92.20", "fabien.pages0477@gmail.com", "SIO2", "SLAM", "Homme"),
+(NULL, "PORTEFAIX", "Paul", "", "06.16.25.23.03", "paul.portefaix@limayrac.fr", "SIO2", "SISR", "Homme"),
+(NULL, "PRADIER", "Alexandre", "", "06.06.90.14.91", "alex.ping48@gmail.com", "SIO2", "SISR", "Homme"),
+(NULL, "TEISSEIRE", "Cyril", "", "06.84.41.28.37", "cyril.teisseire@orange.fr", "SIO2", "SLAM", "Homme"),
+(NULL, "VUCIC", "Antoine", "", "06.52.81.06.65", "antoine.vucic@gmail.com", "SIO2", "SLAM", "Homme");

@@ -3,8 +3,8 @@
     include "../assets/include/global.inc.php";
     session_start();
 
-    $eleveDAO = new eleveDAO();
-    $eleves = $eleveDAO->findAll();
+    $contactDAO = new contactDAO();
+    $contacts = $contactDAO -> findAll();
 
 ?>
 
@@ -33,7 +33,7 @@
 
             <?php
                 
-                include "../assets/include/menuGestionEleve.php";
+                include "../assets/include/menuGestionContact.php";
                 
             ?>
                 
@@ -44,31 +44,29 @@
 
                 echo "<table>";
                 echo "<tr>";
-                echo "<th>Prénom</th>";
                 echo "<th>Nom</th>";
+                echo "<th>Prénom</th>";
                 echo "<th>Genre</th>";
-                echo "<th>Adresse</th>";
-                echo "<th>Telephone</th>";
                 echo "<th>Email</th>";
-                echo "<th>Option</th>";
-                echo "<th>Cursus</th>";
+                echo "<th>Téléphone</th>";
+                echo "<th>Entreprise</th>";
+                echo "<th>Fonction</th>";
                 echo "<th>Modifier</th>";
                 echo "<th>Supprimer</th>";
                 echo "</tr>";
 
-                foreach ($eleves as $eleve) {
+                foreach ($contacts as $contact) {
 
                     echo "<tr>";
-                    echo "<td>". $eleve -> getPrenomEleve() ."</td>";
-                    echo "<td>". $eleve -> getNomEleve() ."</td>";
-                    echo "<td>". $eleve -> getLibelleGenreEleve() ."</td>";
-                    echo "<td>". $eleve -> getAdresseEleve() ."</td>";
-                    echo "<td>". $eleve -> getTelephoneEleve() ."</td>";
-                    echo "<td>". $eleve -> getEmailEleve() ."</td>";
-                    echo "<td>". $eleve -> getLibelleOptionEleve() ."</td>";
-                    echo "<td>". $eleve -> getLibelleCursusEleve() ."</td>";
-                    echo '<td><a href="modifierEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Modifier </td>';
-                    echo '<td><a href="supprimerEleve.php?idEleve='. $eleve -> getIdEleve() .'"> Supprimer </td>';
+                    echo "<td>". $contact -> getNomContact() ."</td>";
+                    echo "<td>". $contact -> getPrenomContact() ."</td>";
+                    echo "<td>". $contact -> getLibelleGenreContact() ."</td>";
+                    echo "<td>". $contact -> getEmailContact() ."</td>";
+                    echo "<td>". $contact -> getTelephoneContact() ."</td>";
+                    echo "<td>". $contact -> getIdEntrepriseContact() ."</td>";
+                    echo '<td>'. $contact -> getIdFonctionContact() .'</td>';
+                    echo '<td><a href="modifierContact.php?idContact='. $contact -> getIdContact() .'"> Modifier </td>';
+                    echo '<td><a href="supprimerContact.php?idContact='. $contact -> getIdContact() .'"> Supprimer </td>';
                     echo "</tr>";
 
                 }

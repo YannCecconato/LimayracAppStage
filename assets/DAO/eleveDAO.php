@@ -21,16 +21,16 @@ class EleveDAO extends DAO {
     } catch (PDOException $ex) {
         throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
     }
-    if ($row == NULL) {
+        if ($row == NULL) {
 
-        return NULL;
+            return NULL;
 
-    } else {
+        } else {
 
-        $eleve = new Eleve($row);
-        return $eleve;
+            $eleve = new Eleve($row);
+            return $eleve;
 
-    }
+        }
     }
 
 /** function findAll() */ 
@@ -56,9 +56,9 @@ class EleveDAO extends DAO {
     }
 
 /** Fonction d'insertion des étudiants */    
-    function insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $libelleOptionEleve, $libelleCursusEleve, $libelleGenreEleve) {
-        $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, AdresseEleve, TelephoneEleve, EmailEleve, LibelleOptionEleve, LibelleCursusEleve, libelleGenreEleve) ";
-        $sql .="VALUES (:prenomEleve, :nomEleve, :adresseEleve, :telephoneEleve, :emailEleve, :libelleOptionEleve, :libelleCursusEleve, :libelleGenreEleve)";
+    function insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $libelleCursusEleve, $libelleOptionEleve, $libelleGenreEleve) {
+        $sql = "INSERT INTO eleve (PrenomEleve, NomEleve, AdresseEleve, TelephoneEleve, EmailEleve, LibelleCursusEleve,LibelleOptionEleve, libelleGenreEleve) ";
+        $sql .="VALUES (:prenomEleve, :nomEleve, :adresseEleve, :telephoneEleve, :emailEleve, :libelleCursusEleve, :libelleOptionEleve, :libelleGenreEleve)";
         $params = array(
         ":prenomEleve" => $prenomEleve,
         ":nomEleve" => $nomEleve,
@@ -74,7 +74,7 @@ class EleveDAO extends DAO {
         return $nb; /** Retourne le nombre de mise à jour */
     }
 
-/** Fonction pour mettre à jour un élève grâce à son email*/
+/** Fonction pour mettre à jour un élève grâce à son ID*/
     function updateByIdEleve($idEleve, $prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $libelleOptionEleve, $libelleCursusEleve, $libelleGenreEleve) {
         $sql = "UPDATE eleve SET ";
         $sql .= "PrenomEleve = :prenomEleve, ";

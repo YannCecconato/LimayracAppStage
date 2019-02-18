@@ -36,6 +36,12 @@
                 </ul>
             </div>
             <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionEleve.php";
+                
+            ?>
                 
             </div>
             <div id="contenu">
@@ -60,7 +66,7 @@
                     </p>
                     <p>Adresse : <input type="text" name="adresse" /></p>    
                     <p>Numéro de téléphone : <input type="text" name="phone"/></p>
-                    <p>Adresse mail : <input type="text" name="email" required /></p>
+                    <p>Adresse mail : <input type="email" name="email" required /></p>
                     <p> 
                         <select name="libelleCursusEleve" required>
                             <option value=""> Choisissez un cursus </option>
@@ -76,7 +82,7 @@
                         </select>
                     </p>
                     <p> 
-                        <select name="idOptionEleve">
+                        <select name="idOptionEleve" required>
                             <option value=""> Choisissez une option </option>
                             <?php 
 
@@ -123,7 +129,7 @@
                             if ($eleve->is_mail_exist($emailEleve) == false) { /** Vérifie si l'adresse mail n'a pas déjà été utilisée */
 
                                     /** Création d'un élève */
-                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $idOptionEleve, $libelleCursusEleve, $libelleGenreEleve);
+                                    $eleve -> insertionEleve($prenomEleve, $nomEleve, $adresseEleve, $telephoneEleve, $emailEleve, $libelleCursusEleve, $idOptionEleve, $libelleGenreEleve);
                                     header ("Location: consulterEleve.php");
 
                             } else { /** L'email saisit est déjà utilisé */

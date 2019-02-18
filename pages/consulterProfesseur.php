@@ -31,6 +31,12 @@
                 </ul>
             </div>
             <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionProfesseur.php";
+                
+            ?>
                 
             </div>
             <div id="contenu">

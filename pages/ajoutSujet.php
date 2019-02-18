@@ -48,6 +48,12 @@
                 </ul>
             </div>
             <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionSujet.php";
+                
+            ?>
                 
             </div>
             <div id="contenu">
@@ -64,7 +70,7 @@
                         <select name="idEleveSujet">
                             <option value=""> Choissisez un élève </option>
                             <?php 
-                                foreach($eleves as $eleve) {
+                                foreach ($eleves as $eleve) {
 
                                     echo '<option'.' value="'. $eleve -> getIdEleve() .'"'.''.'>'. $eleve -> getPrenomEleve() ." ".  $eleve -> getNomEleve() .'</option>';
 
@@ -72,11 +78,20 @@
                             ?> 
                         </select>
                     </p>
+                    <p>
+                        <?php 
+                            foreach ($ressources as $ressource) {
+                            
+                                echo '<input'.'type="checkbox" name="'. $ressource -> getIdRessource() .'" value="'. $ressource -> getLibelleRessource() .'"'.'>';
+
+                            }
+                        ?>    
+                    </p>
                     <p> 
                         <select name="idStatutSujet">
                             <option value=""> Choissisez un statut </option>
                             <?php 
-                                foreach($status as $statut) {
+                                foreach ($status as $statut) {
 
                                     echo '<option'.' value="'. $statut -> getIdStatut() .'"'.''.'>'. $statut -> getLibelleStatut() .'</option>';
 
@@ -88,7 +103,7 @@
                         <select name="idProfesseurSujet">
                             <option value=""> Choissisez un professeur </option>
                             <?php 
-                                foreach($professeurs as $professseur) {
+                                foreach ($professeurs as $professseur) {
 
                                     echo '<option'.' value="'. $professseur -> getIdProfesseur() .'"'.''.'>'. $professseur -> getPrenomProfesseur() ." ". $professseur -> getNomProfesseur() .'</option>';
 

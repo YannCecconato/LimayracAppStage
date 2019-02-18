@@ -163,7 +163,7 @@ box-shadow: 1px 1px 12px #555; /* Ajoute un effet d'ombre */
 /* entete */
 div#entete {
     position: relative;
-    width: 1300px;
+    width: 1325px;
     margin-left: 40px;
     margin-top: 0px;
     padding: 50px;
@@ -192,7 +192,7 @@ div#menuperso {
 
 /* contenu */
 div#contenu {
-width: 1000px;
+width: 1175px;
 margin-left: 250px;
 margin-top: 50px;
 padding: 15px;

@@ -30,6 +30,12 @@
                 </ul>
             </div>
             <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionRessource.php";
+                
+            ?>
                 
             </div>
             <div id="contenu">

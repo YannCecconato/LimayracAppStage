@@ -77,9 +77,9 @@ class ContactDAO extends DAO {
 
     }
 
-    /** Fonction d'insertion des étudiants */    
+    /** Fonction d'insertion des contacts */    
     function insertionContact($nomContact, $prenomContact, $emailContact, $telephoneContact, $idEntreprise, $idFonction, $libelleGenreContact) {
-        $sql = "INSERT INTO eleve (NomContact, PrenomContact, EmailContact, TelephoneContact, IdEntreprise, IdFonction, LibelleGenreContact) ";
+        $sql = "INSERT INTO contact (NomContact, PrenomContact, EmailContact, TelephoneContact, IdEntrepriseContact, IdFonctionContact, LibelleGenreContact) ";
         $sql .="VALUES (:nomContact, :prenomContact, :emailContact, :telephoneContact, :idEntreprise, :idFonction, :libelleGenreContact)";
         $params = array(
         ":nomContact" => $nomContact,
@@ -98,6 +98,5 @@ class ContactDAO extends DAO {
 
 
 }
-
 
 ?>

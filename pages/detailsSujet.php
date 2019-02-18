@@ -24,6 +24,12 @@
     $contactDAO = new contactDAO();
     $contact = $contactDAO -> find($idContact);
 
+    $idUtiliser = $sujet -> getIdSujet();
+    $utiliserDAO = new utiliserDAO();
+    $utiliser = $utiliserDAO -> find($idUtiliser);
+
+    $ressourceDAO = new ressourceDAO();
+    $ressources = $ressourceDAO -> findAllByIdUtiliser($idUtiliser);
 ?>
 
 <!DOCTYPE html>
@@ -115,6 +121,17 @@
                 <strong> Sujet du stage : </strong>
                 <tr>
                     <td><?php echo $sujet -> getDescriptifSujet(); ?></td>
+                </tr>
+                </table>
+
+                <table>
+                <strong> Ressource(s) utilisée(s) : </strong>
+                <tr>
+                    <td><?php foreach ($ressources as $ressource) {
+
+                            echo $ressource -> getLibelleRessource();
+
+                        } ?></td>
                 </tr>
                 </table>
 

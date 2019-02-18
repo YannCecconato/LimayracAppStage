@@ -19,16 +19,16 @@ class RessourceDAO extends DAO {
     } catch (PDOException $ex) {
         throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
     }
-    if ($row == NULL) {
+        if ($row == NULL) {
 
-        return NULL;
+            return NULL;
 
-    } else {
+        } else {
 
-        $ressource = new Ressource($row);
-        return $ressource;
+            $ressource = new Ressource($row);
+            return $ressource;
 
-    }
+        }
     }
 
 /** function findAll() */ 
@@ -40,6 +40,32 @@ class RessourceDAO extends DAO {
             $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+    $ressources = array();
+    foreach ($rows as $row) {
+
+        $ressources[] = new ressource($row);
+
+    }
+
+    /** Retourne un tableau d'objets "ressource" */ 
+    return $ressources;
+
+    }
+
+/** */
+    function findAllByIdUtiliser($idRessourceUtiliser) {
+        $sql = "SELECT * FROM ressource WHERE IdRessource = :idRessourceUtiliser";
+        try {
+            $sth = $this->pdo->prepare($sql);
+            $sth->execute(array(
+                ":idRessourceUtiliser" => $idRessourceUtiliser
+            ));
+            $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+
+            throw new Exception("Erreur lors de la requête SQL : " . $e->getMessage());
+
         }
     $ressources = array();
     foreach ($rows as $row) {

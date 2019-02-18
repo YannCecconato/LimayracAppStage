@@ -26,17 +26,26 @@
                     ?>
                 </ul>
             </div>
+            <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionRessource.php";
+                
+            ?>
+
+            </div>
             <div id="contenu">
 
                 <!-- Début du formulaire d'inscription de l'élève-->
                 <form action="ajoutRessource.php" method="post" class="formulaire">
 
-                    <p>Nom : <input type="text" name="libelleRessource"/></p>
+                    <p>Nom : <input type="text" name="libelleRessource" required/></p>
                     <p>
-                        <select name="typeRessource">
+                        <select name="typeRessource" required>
                             <option value=""> Choisissez un type </option>
-                            <option value="Materielle"> Materielle </option>
-                            <option value="Logicielle"> Logicielle </option>
+                            <option value="Materiel"> Materiel </option>
+                            <option value="Logiciel"> Logiciel </option>
                         </select>
                     </p>        
                     <p><input type="submit" name="submit" value="Ajouter" /><input type="reset" value="Réinitialiser"></p>

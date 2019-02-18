@@ -30,6 +30,12 @@
                 </ul>
             </div>
             <div>
+
+            <?php
+                
+                include "../assets/include/menuGestionEntreprise.php";
+                
+            ?>
                 
             </div>
             <div id="contenu">

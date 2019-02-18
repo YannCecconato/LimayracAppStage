@@ -156,7 +156,7 @@ CREATE TABLE `groupeParametre` (
 --
 
 CREATE TABLE `utiliser` (
-    `IdSujetutiliser`       int(11) DEFAULT NULL,
+    `IdSujetUtiliser`       int(11) DEFAULT NULL,
     `IdRessourceUtiliser`   int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

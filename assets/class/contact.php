@@ -10,7 +10,7 @@ class Contact {
     private $telephoneContact ="?";
     private $idEntrepriseContact = "?";
     private $idFonctionContact = "?";
-    private $idGenreContact = 0;
+    private $LibelleGenreContact = 0;
 
     /* function construct */
     function __construct(array $tableau = null) {
@@ -160,21 +160,21 @@ class Contact {
     }
 
     /**
-     * Get the value of idGenreContact
+     * Get the value of LibelleGenreContact
      */ 
-    public function getIdGenreContact()
+    public function getLibelleGenreContact()
     {
-        return $this->idGenreContact;
+        return $this->LibelleGenreContact;
     }
 
     /**
-     * Set the value of idGenreContact
+     * Set the value of LibelleGenreContact
      *
      * @return  self
      */ 
-    public function setIdGenreContact($idGenreContact)
+    public function setLibelleGenreContact($LibelleGenreContact)
     {
-        $this->idGenreContact = $idGenreContact;
+        $this->LibelleGenreContact = $LibelleGenreContact;
 
         return $this;
     }
