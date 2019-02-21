@@ -53,6 +53,19 @@ class UtiliserDAO extends DAO {
 
     }
 
+/** Fonction d'insertion des resources */    
+    function insertionUtiliser($idSujetUtiliser, $idRessourceUtiliser) {
+        $sql = "INSERT INTO utiliser (IdSujetUtiliser, IdRessourceUtiliser) ";
+        $sql .="VALUES (:idSujetUtiliser, :idRessourceUtiliser)";
+        $params = array(
+        ":idSujetUtiliser" => $idSujetUtiliser,
+        ":idRessourceUtiliser" => $idRessourceUtiliser
+        );
+        $sth = $this->executer($sql, $params); /** On passe par la méthode de la classe mère */
+        $nb = $sth->rowcount();
+        return $nb; /** Retourne le nombre de mise à jour */
+    }
+
 }
 
 ?>

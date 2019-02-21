@@ -9,7 +9,7 @@ class SujetDAO extends DAO {
 
 /** Fonction pour obtenir toutes les infos d'un élève grâce à son ID */ 
     function find($idSujet){
-        $sql = "SELECT * FROM sujet WHERE IdSujet = :idSujet";
+        $sql = "SELECT * FROM eleve, sujet WHERE IdSujet = :idSujet AND sujet.IdEleveSujet = eleve.IdEleve AND nomEleve LIKE '%$recherche'";
         try {
             $sth = $this->pdo->prepare($sql);
             $sth->execute(array(
@@ -30,7 +30,6 @@ class SujetDAO extends DAO {
 
         }
     }
-
 
 /** function findAll() */ 
     function findAll() {

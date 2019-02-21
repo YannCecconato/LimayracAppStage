@@ -39,8 +39,15 @@
                 
             </div>
             <div id="contenu">
+            <form action="Créatures.php" id="form1" method="post">
+                <p>Rechercher par nom d'élève : <input type="text" name="recherche" placeholder="Recherche" disabled/>
+                    <input type="submit" name="submit" value="OK" disabled/></p>
+            </form>
 
             <?php
+            
+            $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
+            $submit = isset($_POST['submit']);
 
                 echo "<table>";
                 echo "<tr>";

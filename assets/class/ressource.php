@@ -3,8 +3,8 @@
 class Ressource {
 
     /* Déclaration des varibles */
-    private $idressource = 0;
-    private $libelleressource = "?";
+    private $idRessource = 0;
+    private $libelleRessource = "?";
     private $typeRessource = "?";
 
     /* function construct */
@@ -12,48 +12,47 @@ class Ressource {
         if ($tableau != null) {
             $this->hydrater($tableau);
         }
-    } /* function construct */
-
-    /**
-     * Get the value of idressource
-     */ 
-    public function getIdressource()
-    {
-        return $this->idressource;
     }
 
     /**
-     * Set the value of idressource
+     * Get the value of idRessource
+     */ 
+    public function getIdRessource()
+    {
+        return $this->idRessource;
+    }
+
+    /**
+     * Set the value of idRessource
      *
      * @return  self
      */ 
-    public function setIdressource($idressource)
+    public function setIdRessource($idRessource)
     {
-        $this->idressource = $idressource;
+        $this->idRessource = $idRessource;
 
         return $this;
     }
 
     /**
-     * Get the value of libelleressource
+     * Get the value of libelleRessource
      */ 
-    public function getLibelleressource()
+    public function getLibelleRessource()
     {
-        return $this->libelleressource;
+        return $this->libelleRessource;
     }
 
     /**
-     * Set the value of libelleressource
+     * Set the value of libelleRessource
      *
      * @return  self
      */ 
-    public function setLibelleressource($libelleressource)
+    public function setLibelleRessource($libelleRessource)
     {
-        $this->libelleressource = $libelleressource;
+        $this->libelleRessource = $libelleRessource;
 
         return $this;
     }
-
 
     /**
      * Get the value of typeRessource

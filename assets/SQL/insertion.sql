@@ -210,3 +210,18 @@ VALUES
 (NULL, "PRADIER", "Alexandre", "", "06.06.90.14.91", "alex.ping48@gmail.com", "SIO2", "SISR", "Homme"),
 (NULL, "TEISSEIRE", "Cyril", "", "06.84.41.28.37", "cyril.teisseire@orange.fr", "SIO2", "SLAM", "Homme"),
 (NULL, "VUCIC", "Antoine", "", "06.52.81.06.65", "antoine.vucic@gmail.com", "SIO2", "SLAM", "Homme");
+
+-- Début données "ressource" --
+
+INSERT INTO `ressource` (IdRessource, LibelleRessource, TypeRessource)
+VALUES
+(NULL, "Câble RJ45", "Materiel"),
+(NULL, "Carte mère", "Materiel"),
+(NULL, "Processeur", "Materiel"),
+(NULL, "Ordinateur", "Materiel"),
+(NULL, "Serveur", "Materiel"),
+(NULL, "Windows", "Logiciel"),
+(NULL, "Linux", "Logiciel"),
+(NULL, "PHP", "Logiciel"),
+(NULL, "JavaScript", "Logiciel"),
+(NULL, "HTML", "Logiciel");

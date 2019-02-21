@@ -29,7 +29,7 @@
     $utiliser = $utiliserDAO -> find($idUtiliser);
 
     $ressourceDAO = new ressourceDAO();
-    $ressources = $ressourceDAO -> findAllByIdUtiliser($idUtiliser);
+    $ressources = $ressourceDAO -> findAll();
 ?>
 
 <!DOCTYPE html>
@@ -127,11 +127,6 @@
                 <table>
                 <strong> Ressource(s) utilisée(s) : </strong>
                 <tr>
-                    <td><?php foreach ($ressources as $ressource) {
-
-                            echo $ressource -> getLibelleRessource();
-
-                        } ?></td>
                 </tr>
                 </table>
 
